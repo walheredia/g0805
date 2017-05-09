@@ -14,5 +14,7 @@
 	background-color: #333;
 }
 
-.carousel-inner { text-align: center; }
-.carousel .item > img { display: inline-block; }
+.nav-row {
+	height: 10px;
+	width: 100%;
+}
