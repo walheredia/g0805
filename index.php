@@ -9,6 +9,7 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/animate.css">
     <link href="css/style.css" rel="stylesheet">
 
   </head>
@@ -25,7 +26,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">GÜLP<i class="fa fa-registered" aria-hidden="true" style="font-size:12px"></i></a>
+
+          <a class="navbar-brand" href="index.php"><IMG SRC="images/pousta.jpg" class="img-responsive center-block" style="width: 100px; margin-top: -11px;"></IMG></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -44,8 +46,8 @@
     </nav>
     <!--End navbar -->
     <!--start carousel -->
-    <div id="contenedor" style="width: 100%; padding-top: 52px;" class="center-block">
-      <div id="myCarousel" class="carousel slide">
+    <div id="contenedor" stly="padding-top:-10px;" class="center-block col-sm-12">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -67,6 +69,28 @@
         -->
       </div>
   </div>
+  <div class="container">
+    <h2> Conozca nuestros productos!
+    </h2>
+    <hr/>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="images/2.jpg" id="1" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+      </div>
+      <div class="col-md-3">
+        <img src="images/2.jpg" id="2" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+      </div>
+      <div class="col-md-3">
+        <img src="images/2.jpg" id="3" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+      </div>
+      <div class="col-md-3">
+        <img src="images/2.jpg" id="4" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+      </div>
+    </div>
+  </div>
 
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -74,11 +98,45 @@
       $(document).ready(function () {
         $('.carousel').carousel({
           pause: false,
-          interval: 3000
+          interval: 2000
         })
       });
+      $("#1").hover(function(){
+        $(this).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $("#1").removeClass('animated pulse');
+        }, 1000);
+      });
+      $("#2").hover(function(){
+        $(this).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $("#2").removeClass('animated pulse');
+        }, 1000);
+      });
+      $("#3").hover(function(){
+        $(this).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $("#3").removeClass('animated pulse');
+        }, 1000);
+      });
+      $("#4").hover(function(){
+        $(this).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $("#4").removeClass('animated pulse');
+        }, 1000);
+      });
+
+
   </script>
-    
+
+    <footer class="footer">
+      <p>Ind. Argentina, Santa Fe, Rosario</p>
+      <p>G&Uuml;LP&#174; <?php echo date("Y")?> - Todos los derechos reservados.</p>
+    </footer>   
   </body>
   
 </html>

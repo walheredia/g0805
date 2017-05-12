@@ -18,3 +18,28 @@
 	height: 10px;
 	width: 100%;
 }
+
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+}
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+.footer {
+  background-color: #3c3f41;
+  height: 80px;
+  padding-top: 5px;
+  margin-top: 5px;
+  text-align: center;
+  color: white;
+}
