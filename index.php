@@ -14,7 +14,9 @@
 
   </head>
   <body style="font-family: 'Cabin Condensed', sans-serif;">
-  <div id="topall" class="nav-row" style="padding-top: 2px;">
+  <div id="topall" class="container nav-row animated fadeInDown" style="padding-top: 2px;">
+  <i id="top1" class="fa fa-fighter-jet" aria-hidden="true" style=" color: #fff; width: 100%;"></i>
+  <i id="top2" class="fa fa-fighter-jet" aria-hidden="true" style="float: left; color: #fff; width: 100%;"></i>
     <p id="top1" style="display: inline;"><i class="fa fa-fighter-jet" aria-hidden="true" style="color: #fff;"></i></p>
     <p id="top2" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">GÜLP,</p>
     <p id="top3" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Objetos</p>
@@ -55,7 +57,7 @@
     </nav>
     <!--End navbar -->
     <!--start carousel -->
-    <div id="contenedor" stly="padding-top:-10px;" class="center-block col-sm-12">
+    <div id="contenedor" style ="margin-top: -12px;" class="center-block col-sm-12">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -115,11 +117,12 @@
         })
       });
       $("#topall").hover(function(){
-        $("#top1").addClass('animated fadeOutDown');
+        $("#top1").addClass('animated fadeOutRight');
         $("#top2").addClass('animated lightSpeed');
         
         setTimeout(function(){
-          $("#1").removeClass('animated pulse');
+          $("#top1").removeClass('animated fadeOutRight');
+          $("#top1").addClass('animated fadeInLeft');
         }, 1000);
       });
 
