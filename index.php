@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>GÜLP</title>
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/icono.png">
 
   </head>
   <body style="font-family: 'Cabin Condensed', sans-serif;">
@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="index.php"><IMG SRC="images/pousta.jpg" class="img-responsive center-block" style="width: 100px; margin-top: -11px;"></IMG></a>
+          <a class="navbar-brand" href="index.php"><IMG SRC="images/transp.jpg" class="img-responsive center-block" style="width: 168px; margin-top: -15px;"></IMG></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" style="font-size: 18.5px; font-family: 'Cabin Condensed', sans-serif !important;">
           <ul class="nav navbar-nav">
@@ -77,6 +77,10 @@
         <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
         -->
       </div>
+  </div>
+  <div class="container">
+  <img src="images/iso.png" alt="banner4" class="img-responsive center-block animated bounceInRight" />
+    <hr/>
   </div>
   <div class="container">
     <h2> Conozca nuestros productos!

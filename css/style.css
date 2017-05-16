@@ -1,5 +1,5 @@
 .bg-color {
-	background-color: #3c3f41;
+	background-color: #192328;
 }
 
 .navbar-inverse 
@@ -11,8 +11,12 @@
 .navbar-inverse 
 .navbar-nav>
 .active>a:hover {
-	background-color: #333;
+	background-color: #555;
   font-family: 'Cabin Condensed', sans-serif;
+  border-radius: 6px 6px 6px 6px;
+-moz-border-radius: 6px 6px 6px 6px;
+-webkit-border-radius: 6px 6px 6px 6px;
+border: 0px solid #000000;
 }
 
 .nav-row{
@@ -39,7 +43,8 @@ hr {
 }
 
 .footer {
-  background-color: #3c3f41;
+  background-color: #222;
+  /*background-color: #3c3f41;*/
   height: 80px;
   padding-top: 5px;
   margin-top: 5px;
