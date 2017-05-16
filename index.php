@@ -14,9 +14,20 @@
 
   </head>
   <body style="font-family: 'Cabin Condensed', sans-serif;">
-  <div id="topall" class="container nav-row animated fadeInDown" style="padding-top: 2px;">
-  <i id="top1" class="fa fa-fighter-jet" aria-hidden="true" style=" color: #fff; width: 100%;"></i>
-  <i id="top2" class="fa fa-fighter-jet" aria-hidden="true" style="float: left; color: #fff; width: 100%;"></i>
+  <div id="topall" class="container nav-row animated fadeInDown" style="padding-top: 2px; width: 100%;">
+    <div class="col-sm-4">
+      <i id="top1" class="fa fa-fighter-jet" aria-hidden="true" style="color: #fff; width: 30%;"></i>  
+    </div>
+    <div class="col-sm-4">
+      <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 550; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
+    </div>
+    <div class="col-sm-4">
+      <i id="top1" class="fa fa-fighter-jet" aria-hidden="true" style="color: #fff; width: 30%;"></i>
+    </div>
+  </div>
+    <!--
+    <i id="top1" class="fa fa-fighter-jet" aria-hidden="true" style=" color: #fff; width: 100%;"></i>
+    <i id="top2" class="fa fa-fighter-jet" aria-hidden="true" style="float: left; color: #fff; width: 100%;"></i>
     <p id="top1" style="display: inline;"><i class="fa fa-fighter-jet" aria-hidden="true" style="color: #fff;"></i></p>
     <p id="top2" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">GÜLP,</p>
     <p id="top3" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Objetos</p>
@@ -24,8 +35,7 @@
     <p id="top5" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Otra</p>
     <p id="top6" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Galaxia</p>
     <p id="top7" style="display: inline;"><i class="fa fa-rocket" aria-hidden="true" style="color: #fff;"></i></p>
-  </div>
-    
+    -->
   </div>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse bg-color">
@@ -117,8 +127,8 @@
         })
       });
       $("#topall").hover(function(){
+        $("#top2").addClass('animated fadeOutRight');
         $("#top1").addClass('animated fadeOutRight');
-        $("#top2").addClass('animated lightSpeed');
         
         setTimeout(function(){
           $("#top1").removeClass('animated fadeOutRight');
