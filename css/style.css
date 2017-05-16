@@ -12,11 +12,14 @@
 .navbar-nav>
 .active>a:hover {
 	background-color: #333;
+  font-family: 'Cabin Condensed', sans-serif;
 }
 
-.nav-row {
-	height: 10px;
+.nav-row{
+  height: 25px;
 	width: 100%;
+  background-color: #0be;
+  text-align: center;
 }
 
 hr {
@@ -42,4 +45,14 @@ hr {
   margin-top: 5px;
   text-align: center;
   color: white;
+}
+
+.ancho_max_imagen {
+-ms-interpolation-mode: bicubic; //hack ie
+max-width:500px;
+max-height:auto;
+}
+
+#nav a {
+  font-family: 'Cabin Condensed', sans-serif !important;  
 }

@@ -13,8 +13,17 @@
     <link href="css/style.css" rel="stylesheet">
 
   </head>
-  <body>
-  <div class="nav-row" style="height: 15px; width: 100%;">
+  <body style="font-family: 'Cabin Condensed', sans-serif;">
+  <div id="topall" class="nav-row" style="padding-top: 2px;">
+    <p id="top1" style="display: inline;"><i class="fa fa-fighter-jet" aria-hidden="true" style="color: #fff;"></i></p>
+    <p id="top2" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">GÜLP,</p>
+    <p id="top3" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Objetos</p>
+    <p id="top4" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">de </p>
+    <p id="top5" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Otra</p>
+    <p id="top6" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Galaxia</p>
+    <p id="top7" style="display: inline;"><i class="fa fa-rocket" aria-hidden="true" style="color: #fff;"></i></p>
+  </div>
+    
   </div>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse bg-color">
@@ -29,7 +38,7 @@
 
           <a class="navbar-brand" href="index.php"><IMG SRC="images/pousta.jpg" class="img-responsive center-block" style="width: 100px; margin-top: -11px;"></IMG></a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse" style="font-size: 18.5px; font-family: 'Cabin Condensed', sans-serif !important;">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Inicio</a></li>
             <li><a href="#">Productos</a></li>
@@ -57,11 +66,11 @@
         </ol>
         <!-- Carousel items -->
         <div class="carousel-inner">
-          <div class="active item"><img  src="images/1.jpg" alt="banner1" class="img-responsive center-block" /></div>
-          <div class="item"><img  src="images/2.jpg" alt="banner2" class="img-responsive center-block" /></div>
-          <div class="item"><img  src="images/1.jpg" alt="banner3" class="img-responsive center-block" /></div>
-          <div class="item"><img  src="images/2.jpg" alt="banner4" class="img-responsive center-block" /></div>
-          <div class="item"><img  src="images/1.jpg" alt="banner5" class="img-responsive center-block" /></div>
+          <div class="active item"><img  src="images/pr2.jpg" alt="banner1" class="img-responsive center-block animated bounceInRight" /></div>
+          <div class="item"><img src="images/pr2.jpg" alt="banner2" class="img-responsive center-block animated bounceInRight" /></div>
+          <div class="item"><img src="images/pr2.jpg" alt="banner3" class="img-responsive center-block animated bounceInRight" /></div>
+          <div class="item"><img src="images/pr2.jpg" alt="banner4" class="img-responsive center-block animated bounceInRight" /></div>
+          <div class="item"><img src="images/pr2.jpg" alt="banner5" class="img-responsive center-block animated bounceInRight" /></div>
         </div>
         <!-- Carousel nav 
         <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
@@ -98,9 +107,18 @@
       $(document).ready(function () {
         $('.carousel').carousel({
           pause: false,
-          interval: 2000
+          interval: 2500
         })
       });
+      $("#topall").hover(function(){
+        $("#top1").addClass('animated fadeOutDown');
+        $("#top2").addClass('animated lightSpeed');
+        
+        setTimeout(function(){
+          $("#1").removeClass('animated pulse');
+        }, 1000);
+      });
+
       $("#1").hover(function(){
         $(this).addClass('animated pulse');
         
