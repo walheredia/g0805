@@ -22,7 +22,7 @@
       <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 550; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
     </div>
     <div class="col-sm-4">
-      <i id="top1" class="fa fa-fighter-jet" aria-hidden="true" style="color: #fff; width: 30%;"></i>
+      <i id="top3" class="fa fa-rocket" aria-hidden="true" style="color: #fff; width: 30%;"></i>
     </div>
   </div>
     <!--
@@ -91,27 +91,34 @@
       </div>
   </div>
   <div class="container">
-  <img src="images/iso.png" alt="banner4" class="img-responsive center-block animated bounceInRight" />
+  <img id="iso" src="images/iso.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 10px;" />
     <hr/>
   </div>
   <div class="container">
-    <h2> Conozca nuestros productos!
-    </h2>
+    <h2 id="conozca" class="conozca">¡Conozca nuestros productos!</h2>
     <hr/>
   </div>
 
-  <div class="container">
+  <div class="container" style="padding-bottom: 30px;">
     <div class="row">
       <div class="col-md-3">
+        <div class="nombre">Nombre del Producto</div>
+        <div class="descripcion">Esta es la descripcion del producto</div>
         <img src="images/2.jpg" id="1" alt="banner1" class="img-responsive center-block img-thumbnail"/>
       </div>
       <div class="col-md-3">
+        <div class="nombre">Nombre del Producto</div>
+        <div class="descripcion">Esta es la descripcion del producto</div>
         <img src="images/2.jpg" id="2" alt="banner1" class="img-responsive center-block img-thumbnail"/>
       </div>
       <div class="col-md-3">
+        <div class="nombre">Nombre del Producto</div>
+        <div class="descripcion">Esta es la descripcion del producto</div>
         <img src="images/2.jpg" id="3" alt="banner1" class="img-responsive center-block img-thumbnail"/>
       </div>
       <div class="col-md-3">
+        <div class="nombre">Nombre del Producto</div>
+        <div class="descripcion">Esta es la descripcion del producto</div>
         <img src="images/2.jpg" id="4" alt="banner1" class="img-responsive center-block img-thumbnail"/>
       </div>
     </div>
@@ -127,13 +134,34 @@
         })
       });
       $("#topall").hover(function(){
-        $("#top2").addClass('animated fadeOutRight');
-        $("#top1").addClass('animated fadeOutRight');
+        setTimeout(function(){
+          $("#top1").addClass('animated fadeOutRight');
+        }, 500);
+        setTimeout(function(){
+          $("#top3").addClass('animated fadeOutRight');
+        }, 1000);
+        setTimeout(function(){
+          $("#top2").addClass('animated fadeOutRight');
+        }, 1500);
         
         setTimeout(function(){
           $("#top1").removeClass('animated fadeOutRight');
           $("#top1").addClass('animated fadeInLeft');
-        }, 1000);
+        }, 2000);
+        setTimeout(function(){
+          $("#top3").removeClass('animated fadeOutRight');
+          $("#top3").addClass('animated fadeInLeft');
+        }, 2500);
+        setTimeout(function(){
+          $("#top2").removeClass('animated fadeOutRight');
+          $("#top2").addClass('animated fadeInTop');
+        }, 2000);
+
+        setTimeout(function(){
+          $("#top2").removeClass('animated fadeOutRight');
+          $("#top2").addClass('animated flash');
+        }, 3500);
+
       });
 
       $("#1").hover(function(){
@@ -163,6 +191,25 @@
         setTimeout(function(){
           $("#4").removeClass('animated pulse');
         }, 1000);
+      });
+
+      $("#iso").hover(function(){
+        setTimeout(function(){
+          $("#iso").removeClass('animated rotateIn');
+        }, 1000);
+        
+        setTimeout(function(){
+          $("#iso").addClass('animated rotateIn');
+        }, 300);
+      });
+
+      $("#conozca").hover(function(){
+        $("#conozca").addClass('animated flipInX');
+
+        setTimeout(function(){
+          $("#conozca").removeClass('animated flipInX');
+        }, 2000);
+
       });
 
 

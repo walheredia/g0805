@@ -61,3 +61,35 @@ max-height:auto;
 #nav a {
   font-family: 'Cabin Condensed', sans-serif !important;  
 }
+
+.nombre {
+  font-family: 'Cabin Condensed', 'sans-serif';
+  color: #01bbee;
+  font-size: 20px;
+  text-align: left;
+  margin: 7px 0 0;
+  font-weight: 600;
+  letter-spacing: -1px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.descripcion {
+  font-family: 'Shadows Into Light', cursive;
+  color: #192328;
+  font-size: 17px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: -1px;
+  padding-bottom: 5px;
+}
+
+.conozca {
+  font-weight: 800;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  letter-spacing: -1px;
+}
