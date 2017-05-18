@@ -89,7 +89,15 @@ max-height:auto;
 .conozca {
   font-weight: 800;
   font-size: 30px;
+  color: #FFF;
   text-align: center;
   width: 100%;
   letter-spacing: -1px;
+}
+
+.middle {
+  background-image: url("../images/paint.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
 }

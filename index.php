@@ -90,16 +90,15 @@
         -->
       </div>
   </div>
-  <div class="container">
   <img id="iso" src="images/iso.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 10px;" />
-    <hr/>
-  </div>
-  <div class="container">
+  <div class="container middle">
+    
+    <hr style="width: 100%;" />
     <h2 id="conozca" class="conozca">¡Conozca nuestros productos!</h2>
-    <hr/>
+    <hr style="width: 100%;" />
   </div>
 
-  <div class="container" style="padding-bottom: 30px;">
+  <div class="container" style="padding-top: 15px; padding-bottom: 30px;">
     <div class="row">
       <div class="col-md-3">
         <div class="nombre">Nombre del Producto</div>
@@ -120,6 +119,30 @@
         <div class="nombre">Nombre del Producto</div>
         <div class="descripcion">Esta es la descripcion del producto</div>
         <img src="images/2.jpg" id="4" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+      </div>
+    </div>
+  </div>
+   <div class="container" style="padding-bottom: 30px;">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="nombre">Nombre del Producto</div>
+        <div class="descripcion">Esta es la descripcion del producto</div>
+        <img src="images/2.jpg" id="5" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+      </div>
+      <div class="col-md-3">
+        <div class="nombre">Nombre del Producto</div>
+        <div class="descripcion">Esta es la descripcion del producto</div>
+        <img src="images/2.jpg" id="6" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+      </div>
+      <div class="col-md-3">
+        <div class="nombre">Nombre del Producto</div>
+        <div class="descripcion">Esta es la descripcion del producto</div>
+        <img src="images/2.jpg" id="7" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+      </div>
+      <div class="col-md-3">
+        <div class="nombre">Nombre del Producto</div>
+        <div class="descripcion">Esta es la descripcion del producto</div>
+        <img src="images/2.jpg" id="8" alt="banner1" class="img-responsive center-block img-thumbnail"/>
       </div>
     </div>
   </div>
@@ -193,6 +216,35 @@
         }, 1000);
       });
 
+      $("#5").hover(function(){
+        $(this).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $("#5").removeClass('animated pulse');
+        }, 1000);
+      });
+      $("#6").hover(function(){
+        $(this).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $("#6").removeClass('animated pulse');
+        }, 1000);
+      });
+      $("#7").hover(function(){
+        $(this).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $("#7").removeClass('animated pulse');
+        }, 1000);
+      });
+      $("#8").hover(function(){
+        $(this).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $("#8").removeClass('animated pulse');
+        }, 1000);
+      });
+
       $("#iso").hover(function(){
         setTimeout(function(){
           $("#iso").removeClass('animated rotateIn');
@@ -204,10 +256,10 @@
       });
 
       $("#conozca").hover(function(){
-        $("#conozca").addClass('animated flipInX');
+        $("#conozca").addClass('animated flash');
 
         setTimeout(function(){
-          $("#conozca").removeClass('animated flipInX');
+          $("#conozca").removeClass('animated flash');
         }, 2000);
 
       });
@@ -216,6 +268,7 @@
   </script>
 
     <footer class="footer">
+    <img src="images/naave.png" class="pull-right img-responsive animated infinite zoomOutLeft" style="">
       <p>Ind. Argentina, Santa Fe, Rosario</p>
       <p>G&Uuml;LP&#174; <?php echo date("Y")?> - Todos los derechos reservados.</p>
     </footer>   
