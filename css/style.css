@@ -101,3 +101,43 @@ max-height:auto;
   background-position: bottom;
   width: 100%;
 }
+
+  .titulo {
+    font-family: 'Cabin Condensed', 'sans-serif';
+    color: #01bbee;
+    font-size: 40px;
+    text-align: center;
+    margin: 7px 0 0;
+    font-weight: 600;
+    letter-spacing: -1px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .desc {
+    font-family: 'Shadows Into Light', cursive;
+    color: #192328;
+    font-size: 17px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: -1px;
+    padding-bottom: 5px;
+  }
+
+  .prodesc {
+    padding-top: 55px;
+    font-family: 'Shadows Into Light', cursive;
+    color: #01bbee;
+    font-size: 17px;
+    letter-spacing: 0px;
+    padding-bottom: 5px;
+  }
+
+  .pventa-text {
+    font-family: 'Shadows Into Light', cursive;
+    color: #01bbee;
+    font-size: 17px;
+    letter-spacing: 0px;
+  }

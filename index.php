@@ -14,15 +14,9 @@
 
   </head>
   <body style="font-family: 'Cabin Condensed', sans-serif;">
-  <div id="topall" class="container nav-row animated fadeInDown" style="padding-top: 2px; width: 100%;">
-    <div class="col-sm-4">
-      <i id="top1" class="fa fa-fighter-jet" aria-hidden="true" style="color: #fff; width: 30%;"></i>  
-    </div>
-    <div class="col-sm-4">
+  <div id="topall" class="container nav-row animated fadeInDown center-block" style="padding-top: 2px; width: 100%;">
+    <div class="col-sm-12">
       <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 550; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
-    </div>
-    <div class="col-sm-4">
-      <i id="top3" class="fa fa-rocket" aria-hidden="true" style="color: #fff; width: 30%;"></i>
     </div>
   </div>
     <!--
@@ -38,7 +32,7 @@
     -->
   </div>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse bg-color">
+    <nav class="navbar navbar-inverse bg-color" style="padding: 15px 0px 15px 0px">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -48,15 +42,15 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="index.php"><IMG SRC="images/transp.jpg" class="img-responsive center-block" style="width: 168px; margin-top: -15px;"></IMG></a>
+          <a class="navbar-brand" href="index.php"><IMG SRC="images/transp.jpg" class="img-responsive center-block" style="width: 220px; margin-top: -31px;"></IMG></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" style="font-size: 18.5px; font-family: 'Cabin Condensed', sans-serif !important;">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Inicio</a></li>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Puntos de venta</a></li>
-            <li><a href="#">Cómo comprar</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="productos.php">Productos</a></li>
+            <li><a href="puntos_de_venta.php">Puntos de venta</a></li>
+            <li><a href="como_comprar.php">Cómo comprar</a></li>
+            <li><a href="contacto.php">Contacto</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../navbar/"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
@@ -90,11 +84,11 @@
         -->
       </div>
   </div>
-  <img id="iso" src="images/iso.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 10px;" />
+  <img id="iso" src="images/iso.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 0px;" />
   <div class="container middle">
     
     <hr style="width: 100%;" />
-    <h2 id="conozca" class="conozca">¡Conozca nuestros productos!</h2>
+    <h2 id="prod" class="conozca">¡Conozca nuestros productos!</h2>
     <hr style="width: 100%;" />
   </div>
 
@@ -255,11 +249,11 @@
         }, 300);
       });
 
-      $("#conozca").hover(function(){
-        $("#conozca").addClass('animated flash');
+      $("#prod").hover(function(){
+        $("#prod").addClass('animated flash');
 
         setTimeout(function(){
-          $("#conozca").removeClass('animated flash');
+          $("#prod").removeClass('animated flash');
         }, 2000);
 
       });
@@ -268,7 +262,6 @@
   </script>
 
     <footer class="footer">
-    <img src="images/naave.png" class="pull-right img-responsive animated infinite zoomOutLeft" style="">
       <p>Ind. Argentina, Santa Fe, Rosario</p>
       <p>G&Uuml;LP&#174; <?php echo date("Y")?> - Todos los derechos reservados.</p>
     </footer>   

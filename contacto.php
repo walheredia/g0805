@@ -37,10 +37,10 @@
         <div id="navbar" class="navbar-collapse collapse" style="font-size: 18.5px; font-family: 'Cabin Condensed', sans-serif !important;">
           <ul class="nav navbar-nav">
             <li><a href="index.php">Inicio</a></li>
-            <li class="active"><a href="productos.php">Productos</a></li>
+            <li><a href="productos.php">Productos</a></li>
             <li><a href="puntos_de_venta.php">Puntos de venta</a></li>
             <li><a href="como_comprar.php">Cómo comprar</a></li>
-            <li><a href="contacto.php">Contacto</a></li>
+            <li class="active"><a href="contacto.php">Contacto</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../navbar/"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
@@ -52,54 +52,58 @@
     <!--End navbar -->
     <div class="container">
     	<div class="row">
-    		<div class="col-md-7 center-block">
-    			<div style="float-left; margin-left: 0px; margin-top: -15px;">
-    				<a class="btn btn-default" href="index.php#prod">
-				    <i class="fa fa-hand-o-left fa-2x fa-align-left" title="Regresar a Inicio"></i>
-			  	</a>
-			  	<a class="btn btn-default" href="index.php#prod">
-				    	<i class="fa fa-arrow-left fa-2x fa-align-left" title="Producto Anterior"></i>
-		  			</a>
-		  			<a class="btn btn-default" href="index.php#prod">
-				    	<i class="fa fa-arrow-right fa-2x fa-align-left" title="Producto Siguiente"></i>
-		  			</a>	
-    			</div>
-    			<div class="titulo" style="margin-top: -3px;">TITULOTITULOTITULOTITULOTITULO</div>
-    			<img src="images/2.jpg" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />
-    			<a href="">
-    				<img src="images/2.jpg" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
-    			</a>
-		    	<a href="">
-		    		<img src="images/2.jpg" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;" />
-		    	</a>
-		    	<a href="">
-		    		<img src="images/2.jpg" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;" />
-		    	</a>
-    		</div>
-    		<div class="col-md-5" style="padding-top: 5px;">
-    				
-
-    			<div class="blockquote-reverse prodesc">
-    				<i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    			</div>
-    			<div class="blockquote-reverse prodesc">
-    				<i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    			</div>
-    			<div class="blockquote-reverse prodesc">
-    				<i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    			</div>
-
-    		</div>
-    	</div>
+    		<div class="col-md-12 center-block">
+    			<div style="margin-top: -20px;">
+    			 <div class="titulo" style="margin-top: -3px;">TITULOTITULOTITULOTITULOTITULO</div>
+    		  </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="">
+          <div class="pventa-text text-justify">
+            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          </div>
+          <div class="pventa-text text-justify">
+            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          </div> 
+          <div class="pventa-text text-justify">
+            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          </div>
+          <div class="pventa-text text-justify">
+            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          </div>
+          <div class="pventa-text text-justify">
+            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          </div>
+          <div class="pventa-text text-justify">
+            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          </div>
+          <div class="pventa-text text-justify">
+            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          </div>
+        </div>
+      </div>
     </div>
 
   <script src="js/jquery-3.2.1.min.js"></script>
