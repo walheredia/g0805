@@ -268,7 +268,6 @@
   </script>
 
     <footer class="footer">
-    <img src="images/naave.png" class="pull-right img-responsive animated infinite zoomOutLeft" style="">
       <p>Ind. Argentina, Santa Fe, Rosario</p>
       <p>G&Uuml;LP&#174; <?php echo date("Y")?> - Todos los derechos reservados.</p>
     </footer>   
