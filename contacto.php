@@ -50,61 +50,51 @@
       </div>
     </nav>
     <!--End navbar -->
-    <div class="container">
-    	<div class="row">
-    		<div class="col-md-12 center-block">
-    			<div style="margin-top: -20px;">
-    			 <div class="titulo" style="margin-top: -3px;">TITULOTITULOTITULOTITULOTITULO</div>
-    		  </div>
+    <form class="form-horizontal center-block" style="max-width: 900px; margin-top: -20px;">
+      <div class="form-group" style="margin: 0px 4px 0px 4px;">
+        <div class="col-sm-12 texto-contacto">
+          <h4><strong>GÜLP<i class="fa fa-registered" style="font-size: 12px;" aria-hidden="true"></i></strong> Rosario, Santa Fe, Argentina</h4>
+          <h4>+54 (0341) 012345678</h4>
+          <h4>+54 (0341) 012345678</h4>
+          <h4>contacto@email.com</h4>
+          <hr/>
+          <h4 class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</h4>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12" style="">
-          <div class="pventa-text text-justify">
-            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          </div>
-          <div class="pventa-text text-justify">
-            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          </div> 
-          <div class="pventa-text text-justify">
-            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          </div>
-          <div class="pventa-text text-justify">
-            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          </div>
-          <div class="pventa-text text-justify">
-            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          </div>
-          <div class="pventa-text text-justify">
-            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          </div>
-          <div class="pventa-text text-justify">
-            <i class="fa fa-spinner fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          </div>
+      <div class="form-group" style="margin: -10px 4px 0px 4px;">
+        <div class="col-sm-6">
+          <label class="form-contacto">Nombre y Apellido</label>
+          <input type="text" class="form-control border" id="nombre" required>
+        </div>
+        <div class="col-sm-6">
+          <label class="form-contacto">Email</label>
+          <input type="email" class="form-control border" id="email" required>
         </div>
       </div>
-    </div>
+      <div class="form-group" style="margin: 0px 4px 0px 4px;">
+        <div class="col-sm-6">
+          <label class="form-contacto">Teléfono</label>
+          <input type="text" class="form-control border" id="telefono" required>
+        </div>
+        <div class="col-sm-6">
+          <label class="form-contacto">Provincia y Localidad</label>
+          <input type="text" class="form-control border" id="localidad" required>
+        </div>
+      </div>
+      <div class="form-group" style="margin: 0px 4px 4px 4px;">
+        <div class="col-sm-12">
+          <label class="form-contacto">Mensaje</label>
+          <textarea id="mensaje" class="form-control border" rows="7" style="max-width: 900px;"></textarea>
+        </div>
+      </div>
+      <div class="form-group" style="margin: 0px 4px 0px 4px;">
+        <div class="col-sm-12">
+          <input type="submit" id="submit" name="submit" value="Enviar" class="btn btn-primary form-control">
+        </div>
+      </div>
+    </form>
 
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
