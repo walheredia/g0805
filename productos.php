@@ -1,3 +1,14 @@
+<?php 
+  $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+  $sql = "SELECT * from productos";
+  $result = $conn->query($sql);
+   while($row = $result->fetch_array()){
+  $productos[] = $row;
+  }
+  $conn->close();
+
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57,14 +68,14 @@
     				<a class="btn btn-default" href="index.php#prod">
 				    <i class="fa fa-hand-o-left fa-2x fa-align-left" title="Regresar a Inicio"></i>
 			  	</a>
-			  	<a class="btn btn-default" href="index.php#prod">
+			  	<a class="btn btn-default" onclick="cargar();">
 				    	<i class="fa fa-arrow-left fa-2x fa-align-left" title="Producto Anterior"></i>
 		  			</a>
 		  			<a class="btn btn-default" href="index.php#prod">
 				    	<i class="fa fa-arrow-right fa-2x fa-align-left" title="Producto Siguiente"></i>
 		  			</a>	
     			</div>
-    			<div class="titulo" style="margin-top: -3px;">TITULOTITULOTITULOTITULOTITULO</div>
+    			<div class="titulo" style="margin-top: -3px;" id="nombre"> <?php echo "string"; ?></div>
     			<img src="images/2.jpg" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />
     			<a href="">
     				<img src="images/2.jpg" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
@@ -105,11 +116,25 @@
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript">
+      function cargar() {
+        $.ajax({
+          url: 'ajax.php',
+          type: 'POST',
+          data: 'cargar_id=1',
+          success: function(data) {
+            $('#nombre').text(data);
+            
+          },
+          error: function(){
+          alert('Error!');
+          }
+          });
+      }
       $(document).ready(function () {
         $('.carousel').carousel({
           pause: false,
           interval: 2500
-        })
+        });
       });
       $("#topall").hover(function(){
         setTimeout(function(){
