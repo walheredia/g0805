@@ -1,12 +1,90 @@
 <?php 
-  $conn = new mysqli('localhost', 'root', 'root', 'gulp');
-  $sql = "SELECT * from productos";
-  $result = $conn->query($sql);
-   while($row = $result->fetch_array()){
-  $productos[] = $row;
-  }
-  $conn->close();
+  if(isset($_GET["p"])) {
+    //Conexion
+    $conn = new mysqli('localhost', 'root', 'root', 'gulp');
 
+    //Producto
+    $sql = "SELECT * from productos where id_producto = ".$_GET['p'];
+    $result = $conn->query($sql);
+     while($row = $result->fetch_array()){
+    $productos[] = $row;
+    }
+    if (empty($productos)) {
+      $id_producto = null;
+      $nombre = 'Producto';
+      $descripcion = 'Descripcion';
+    } else {
+      $id_producto = $productos[0]['id_producto'];
+      $nombre = $productos[0]['nombre'];
+      $descripcion = $productos[0]['descripcion'];
+    }
+    
+    //Descripciones
+    $sql1 = "SELECT * from producto_descripcion where id_producto = ".$_GET['p'];
+    $desc = $conn->query($sql1);
+    while($row = $desc->fetch_array()){
+      $descripciones[] = $row;
+    }
+    if (empty($descripciones)) {
+      $descripciones[0]['descripcion']= "Bien, agreguemos una descripcion";
+    }
+
+    //Multimedia
+    $sql2 = "SELECT * from producto_multimedia where id_producto = ".$_GET['p'];
+    $mult = $conn->query($sql2);
+    while($row = $mult->fetch_array()){
+      $multimedias[] = $row;
+    }
+    if (empty($multimedias)) {
+      $multimedias[0]['multimedia']= "empty.png";
+    }
+
+    //Cierro conexion
+    $conn->close();
+
+  } else {
+    //Conexion
+    $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+
+    //Producto
+    $sql = "SELECT * from productos where id_producto = 1";
+    $result = $conn->query($sql);
+     while($row = $result->fetch_array()){
+    $productos[] = $row;
+    }
+    if (empty($productos)) {
+      $id_producto = null;
+      $nombre = 'Producto';
+      $descripcion = 'Descripcion';
+    } else {
+      $id_producto = $productos[0]['id_producto'];
+      $nombre = $productos[0]['nombre'];
+      $descripcion = $productos[0]['descripcion'];
+    }
+    
+    //Descripciones
+    $sql1 = "SELECT * from producto_descripcion where id_producto = 1";
+    $desc = $conn->query($sql1);
+    while($row = $desc->fetch_array()){
+      $descripciones[] = $row;
+    }
+    if (empty($descripciones)) {
+      $descripciones[0]['descripcion']= "Bien, agreguemos una descripcion";
+    }
+
+    //Multimedia
+    $sql2 = "SELECT * from producto_multimedia where id_producto = 1";
+    $mult = $conn->query($sql2);
+    while($row = $mult->fetch_array()){
+      $multimedias[] = $row;
+    }
+    if (empty($multimedias)) {
+      $multimedias[0]['multimedia']= "empty.png";
+    }
+    
+    //Cierro conexion
+    $conn->close();
+  }
   
 ?>
 <!DOCTYPE html>
@@ -75,40 +153,24 @@
 				    	<i class="fa fa-arrow-right fa-2x fa-align-left" title="Producto Siguiente"></i>
 		  			</a>	
     			</div>
-    			<div class="titulo" style="margin-top: -3px;" id="nombre"> <?php echo "string"; ?></div>
-    			<img src="images/2.jpg" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />
-    			<a href="">
-    				<img src="images/2.jpg" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
-    			</a>
-		    	<a href="">
-		    		<img src="images/2.jpg" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;" />
-		    	</a>
-		    	<a href="">
-		    		<img src="images/2.jpg" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;" />
-		    	</a>
+    			<div class="titulo" style="margin-top: -3px;" id="nombre"> <?php echo $nombre; ?></div>
+    			<img src="images/<?php echo $multimedias[0]['multimedia']; ?>" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />
+
+          <?php foreach ($multimedias as $m): ?>
+            <a href="">
+              <img src="images/<?php echo $m['multimedia']; ?>" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
+            </a>
+          <?php endforeach ?>
+
     		</div>
     		<div class="col-md-5" style="padding-top: 5px;">
     				
-
-    			<div class="blockquote-reverse prodesc">
-    				<i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    			</div>
-    			<div class="blockquote-reverse prodesc">
-    				<i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    			</div>
-    			<div class="blockquote-reverse prodesc">
-    				<i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    			</div>
-
+        <input type="" name="id_producto" value="<?php echo $id_producto; ?>">
+          <?php foreach ($descripciones as $d): ?>
+            <div class="blockquote-reverse prodesc">
+              <i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> <?php echo $d['descripcion']; ?>
+            </div>    
+          <?php endforeach ?>
     		</div>
     	</div>
     </div>
