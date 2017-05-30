@@ -13,10 +13,10 @@
     <link rel="shortcut icon" href="images/icono.png">
 
   </head>
-  <body style="font-family: 'Cabin Condensed', sans-serif;">
+  <body style="font-family: 'Cabin Condensed', sans-serif; background-image: url('images/background2.jpg');">
   <div id="topall" class="container nav-row animated fadeInDown center-block" style="padding-top: 2px; width: 100%;">
     <div class="col-sm-12">
-      <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 550; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
+      <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 600; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
     </div>
   </div>
     <!--
@@ -53,7 +53,7 @@
             <li><a href="contacto.php">Contacto</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+            <li><a href="../navbar/"><i class="fa fa-facebook-official" aria-hidden="true" style=""></i></a></li>
             <li><a href="../navbar/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -97,22 +97,22 @@
       <div class="col-md-3">
         <div class="nombre">Nombre del Producto</div>
         <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="1" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+        <img src="images/2.jpg" id="1" alt="banner1" class="img-responsive"/>
       </div>
       <div class="col-md-3">
         <div class="nombre">Nombre del Producto</div>
         <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="2" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+        <img src="images/2.jpg" id="2" alt="banner1" class="img-responsive center-block img-rounded"/>
       </div>
       <div class="col-md-3">
         <div class="nombre">Nombre del Producto</div>
         <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="3" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+        <img src="images/2.jpg" id="3" alt="banner1" class="img-responsive center-block img-rounded"/>
       </div>
       <div class="col-md-3">
         <div class="nombre">Nombre del Producto</div>
         <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="4" alt="banner1" class="img-responsive center-block img-thumbnail"/>
+        <img src="images/2.jpg" id="4" alt="banner1" class="img-responsive center-block img-rounded"/>
       </div>
     </div>
   </div>
@@ -260,7 +260,7 @@
 
 
   </script>
-
+  
     <footer class="footer">
       <p>Ind. Argentina, Santa Fe, Rosario</p>
       <p>G&Uuml;LP&#174; <?php echo date("Y")?> - Todos los derechos reservados.</p>

@@ -102,7 +102,7 @@
     <link rel="shortcut icon" href="images/icono.png">
 
   </head>
-  <body style="font-family: 'Cabin Condensed', sans-serif;">
+  <body style="font-family: 'Cabin Condensed', sans-serif; background-image: url('images/background2.jpg');">
   <div id="topall" class="container nav-row animated fadeInDown" style="padding-top: 2px; width: 100%;">
     <div class="col-sm-12">
       <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 550; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
@@ -146,31 +146,35 @@
     				<a class="btn btn-default" href="index.php#prod">
 				    <i class="fa fa-hand-o-left fa-2x fa-align-left" title="Regresar a Inicio"></i>
 			  	</a>
-			  	<a class="btn btn-default" onclick="cargar();">
+			  	<a class="btn btn-default" onclick="bajar();">
 				    	<i class="fa fa-arrow-left fa-2x fa-align-left" title="Producto Anterior"></i>
 		  			</a>
-		  			<a class="btn btn-default" href="index.php#prod">
+		  			<a class="btn btn-default" onclick="subir();">
 				    	<i class="fa fa-arrow-right fa-2x fa-align-left" title="Producto Siguiente"></i>
 		  			</a>	
     			</div>
-    			<div class="titulo" style="margin-top: -3px;" id="nombre"> <?php echo $nombre; ?></div>
-    			<img src="images/<?php echo $multimedias[0]['multimedia']; ?>" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />
+          <div class="titulo" style="margin-top: -45px;" id="nombre"> <?php echo $nombre; ?></div>
+          <div id="imagenes">
+            <img id="imagen_principal" src="images/<?php echo $multimedias[0]['multimedia']; ?>" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />
 
-          <?php foreach ($multimedias as $m): ?>
-            <a href="">
-              <img src="images/<?php echo $m['multimedia']; ?>" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
-            </a>
-          <?php endforeach ?>
+            <?php foreach ($multimedias as $m): ?>
+              <a onclick="cambiarimg('<?php echo $m['multimedia'] ?>');">
+                <img src="images/<?php echo $m['multimedia']; ?>" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
+              </a>
+            <?php endforeach ?>
+          </div>
 
     		</div>
     		<div class="col-md-5" style="padding-top: 5px;">
     				
-        <input type="" name="id_producto" value="<?php echo $id_producto; ?>">
-          <?php foreach ($descripciones as $d): ?>
-            <div class="blockquote-reverse prodesc">
-              <i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> <?php echo $d['descripcion']; ?>
-            </div>    
-          <?php endforeach ?>
+        <input id="prod_id" type="hidden" name="id_producto" value="<?php echo $id_producto; ?>">
+          <div id="descripciones">
+            <?php foreach ($descripciones as $d): ?>
+              <div class="blockquote-reverse prodesc">
+                <i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> <?php echo $d['descripcion']; ?>
+              </div>    
+            <?php endforeach ?>
+          </div>
     		</div>
     	</div>
     </div>
@@ -178,6 +182,90 @@
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript">
+
+      function cambiarimg($img) {
+        $('#imagen_principal').attr('src','images/'+$img);
+      }
+      function bajar() {
+        $.ajax({
+          url: 'ajax.php',
+          type: 'POST',
+          data: 'bajar_id='+$('#prod_id').val(),
+          success: function(data) {
+            var result = $.parseJSON(data);
+            $('#prod_id').val(result[0]);
+            $('#nombre').text(result[1]);
+
+            $.ajax({
+              url: 'ajax.php',
+              type: 'POST',
+              data: 'cargar_descripciones='+$('#prod_id').val(),
+              success: function(data) {
+                $('#descripciones').html(data);
+              },
+              error: function(){
+              alert('Error!');
+              }
+              });
+
+            $.ajax({
+              url: 'ajax.php',
+              type: 'POST',
+              data: 'cargar_imagenes='+$('#prod_id').val(),
+              success: function(data) {
+                $('#imagenes').html(data);
+              },
+              error: function(){
+              alert('Error!');
+              }
+              });
+
+          },
+          error: function(){
+          alert('Error!');
+          }
+          });
+      }
+      function subir() {
+        $.ajax({
+          url: 'ajax.php',
+          type: 'POST',
+          data: 'subir_id='+$('#prod_id').val(),
+          success: function(data) {
+            var result = $.parseJSON(data);
+            $('#prod_id').val(result[0]);
+            $('#nombre').text(result[1]);
+
+            $.ajax({
+              url: 'ajax.php',
+              type: 'POST',
+              data: 'cargar_descripciones='+$('#prod_id').val(),
+              success: function(data) {
+                $('#descripciones').html(data);
+              },
+              error: function(){
+              alert('Error!');
+              }
+              });
+            
+            $.ajax({
+              url: 'ajax.php',
+              type: 'POST',
+              data: 'cargar_imagenes='+$('#prod_id').val(),
+              success: function(data) {
+                $('#imagenes').html(data);
+              },
+              error: function(){
+              alert('Error!');
+              }
+              });
+
+          },
+          error: function(){
+          alert('Error!');
+          }
+          });
+      }
       function cargar() {
         $.ajax({
           url: 'ajax.php',
