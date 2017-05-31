@@ -143,7 +143,7 @@
     	<div class="row">
     		<div class="col-md-7 center-block">
     			<div style="float-left; margin-left: 0px; margin-top: -15px;">
-    				<a class="btn btn-default" href="index.php#prod">
+    				<a class="btn btn-default" href="index.php#productos">
 				    <i class="fa fa-hand-o-left fa-2x fa-align-left" title="Regresar a Inicio"></i>
 			  	</a>
 			  	<a class="btn btn-default" onclick="bajar();">
@@ -167,7 +167,7 @@
     		</div>
     		<div class="col-md-5" style="padding-top: 5px;">
     				
-        <input id="prod_id" type="hidden" name="id_producto" value="<?php echo $id_producto; ?>">
+        <input id="prod_id" type="" name="id_producto" value="<?php echo $id_producto; ?>">
           <div id="descripciones">
             <?php foreach ($descripciones as $d): ?>
               <div class="blockquote-reverse prodesc">

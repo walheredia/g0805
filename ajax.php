@@ -20,6 +20,10 @@ if(isset($_POST['cargar_imagenes'])) {
 	echo cargarimagenes($_POST['cargar_imagenes']);
 }
 
+if(isset($_POST['cargar_productos'])) {
+  echo cargarproductos($_POST['cargar_productos']);
+}
+
 function cargarprod($id) {
     $conn = new mysqli('localhost', 'root', 'root', 'gulp');
     $sql = "SELECT * from productos where id_producto = ".$id;
@@ -125,4 +129,58 @@ function cargarimagenes($id) {
     return $html;
 }
 
+function cargarproductos($id) {
+  $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+  $sql = "SELECT * from productos";
+  $result = $conn->query($sql);
+   while($row = $result->fetch_array()){
+  $productos[] = $row;
+  }
+  $html = "";
+  $cant = 0;
+  end($productos);
+  $key = key($productos);
+  $last_id = $productos[$key]['id_producto'];
+
+  foreach ($productos as $p) {
+    $multimedias="";
+    $sql2 = "SELECT * from producto_multimedia where id_producto = ".$p['id_producto'];
+    $mult = $conn->query($sql2);
+    while($row = $mult->fetch_array()){
+      $multimedias[] = $row;
+    }
+    if (empty($multimedias)) {
+      $multimedias[0]['multimedia'] = "empty.png";
+    }
+
+    if ($cant == 0) {
+      $html .= '<div class="container" style="padding-bottom: 30px;">
+                  <div class="row">';
+      $html .= '<div class="col-md-3">
+                  <div class="nombre">'.$p["nombre"].'</div>
+                  <div class="descripcion">'.$p["descripcion"].'</div>
+                  <img src="images/'.$multimedias[0]["multimedia"].'" id="1" onmouseover="hoverim(this)" onclick="window.open(';
+      $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
+      $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
+                </div>';
+      $cant++;
+
+    } else {
+      $html .= '<div class="col-md-3">
+                  <div class="nombre">'.$p["nombre"].'</div>
+                  <div class="descripcion">'.$p["descripcion"].'</div>
+                  <img src="images/'.$multimedias[0]["multimedia"].'" id="1" onmouseover="hoverim(this)" onclick="window.open(';
+      $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
+      $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
+                </div>';
+      $cant++;
+    }
+    if (($cant == 4) or ($p['id_producto'] == $last_id)) {
+      $html .= '</div></div>';
+      $cant = 0;
+    }
+  }
+  $conn->close();
+  return $html;
+}
 ?>

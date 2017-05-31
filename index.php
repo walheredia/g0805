@@ -84,72 +84,50 @@
         -->
       </div>
   </div>
-  <img id="iso" src="images/iso.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 0px;" />
+  <img id="iso" src="images/iso.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 0px; width: 74px;" />
   <div class="container middle">
     
     <hr style="width: 100%;" />
-    <h2 id="prod" class="conozca">¡Conozca nuestros productos!</h2>
+    <h2 class="conozca">¡Conozca nuestros productos!</h2>
     <hr style="width: 100%;" />
   </div>
 
-  <div class="container" style="padding-top: 15px; padding-bottom: 30px;">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="nombre">Nombre del Producto</div>
-        <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="1" alt="banner1" class="img-responsive"/>
-      </div>
-      <div class="col-md-3">
-        <div class="nombre">Nombre del Producto</div>
-        <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="2" alt="banner1" class="img-responsive center-block img-rounded"/>
-      </div>
-      <div class="col-md-3">
-        <div class="nombre">Nombre del Producto</div>
-        <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="3" alt="banner1" class="img-responsive center-block img-rounded"/>
-      </div>
-      <div class="col-md-3">
-        <div class="nombre">Nombre del Producto</div>
-        <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="4" alt="banner1" class="img-responsive center-block img-rounded"/>
-      </div>
-    </div>
-  </div>
-   <div class="container" style="padding-bottom: 30px;">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="nombre">Nombre del Producto</div>
-        <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="5" alt="banner1" class="img-responsive center-block img-thumbnail"/>
-      </div>
-      <div class="col-md-3">
-        <div class="nombre">Nombre del Producto</div>
-        <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="6" alt="banner1" class="img-responsive center-block img-thumbnail"/>
-      </div>
-      <div class="col-md-3">
-        <div class="nombre">Nombre del Producto</div>
-        <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="7" alt="banner1" class="img-responsive center-block img-thumbnail"/>
-      </div>
-      <div class="col-md-3">
-        <div class="nombre">Nombre del Producto</div>
-        <div class="descripcion">Esta es la descripcion del producto</div>
-        <img src="images/2.jpg" id="8" alt="banner1" class="img-responsive center-block img-thumbnail"/>
-      </div>
-    </div>
+  <div style="padding-top: 15px;" id="productos">
+     
   </div>
 
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript">
       $(document).ready(function () {
+        
         $('.carousel').carousel({
           pause: false,
           interval: 2500
-        })
+        });
+
+        $.ajax({
+          url: 'ajax.php',
+          type: 'POST',
+          data: 'cargar_productos=1',
+          success: function(data) {
+            $('#productos').html(data);
+            
+          },
+          error: function(){
+          alert('Error!');
+          }
+          });
+
       });
+      function hoverim(x) {
+         $(x).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $(x).removeClass('animated pulse');
+        }, 1000);
+      };
+
       $("#topall").hover(function(){
         setTimeout(function(){
           $("#top1").addClass('animated fadeOutRight');
