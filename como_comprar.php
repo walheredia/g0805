@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="index.php"><IMG SRC="images/transp.jpg" class="img-responsive center-block" style="width: 220px; margin-top: -31px;"></IMG></a>
+          <a class="navbar-brand" href="index.php"><IMG SRC="images/logo_tr_nuevo.png" class="img-responsive center-block" style="width: 190px; margin-top: -28px;"></IMG></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" style="font-size: 18.5px; font-family: 'Cabin Condensed', sans-serif !important;">
           <ul class="nav navbar-nav">
