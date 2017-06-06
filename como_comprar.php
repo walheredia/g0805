@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="images/icono.png">
 
   </head>
-  <body style="font-family: 'Cabin Condensed', sans-serif; background-image: url('images/background2.jpg');">
+  <body style="font-family: 'Cabin Condensed', sans-serif; background-image: url('images/background2.jpg'); background-attachment: fixed">
   <div id="topall" class="container nav-row animated fadeInDown" style="padding-top: 2px; width: 100%;">
     <div class="col-sm-12">
       <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 600; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
@@ -54,7 +54,7 @@
     	<div class="row">
     		<div class="col-md-12 center-block">
     			<div style="margin-top: -20px;">
-    			 <div class="titulo" style="margin-top: -3px;">TITULOTITULOTITULOTITULOTITULO</div>
+    			 <div class="titulo" style="margin-top: -3px;">Título</div>
     		  </div>
         </div>
       </div>

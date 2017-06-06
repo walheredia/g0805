@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="images/icono.png">
 
   </head>
-  <body style="font-family: 'Cabin Condensed', sans-serif; background-image: url('images/background2.jpg');">
+  <body style="font-family: 'Cabin Condensed', sans-serif; background-image: url('images/background2.jpg'); background-attachment: fixed">
   <div id="topall" class="container nav-row animated fadeInDown center-block" style="padding-top: 2px; width: 100%;">
     <div class="col-sm-12">
       <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 600; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
@@ -84,7 +84,7 @@
         -->
       </div>
   </div>
-  <img id="iso" src="images/iso_tr_nuevo.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 0px; width: 60px;" />
+  <img id="iso" src="images/iso_tr_nuevo.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 7px; padding-bottom: 7px; width: 60px;" />
   <div class="container middle">
     
     <hr style="width: 100%;" />
@@ -120,13 +120,13 @@
           });
 
       });
-      function hoverim(x) {
-         $(x).addClass('animated pulse');
-        
-        setTimeout(function(){
-          $(x).removeClass('animated pulse');
-        }, 1000);
-      };
+        function hoverim(x) {
+           $(x).addClass('animated pulse');
+          
+          setTimeout(function(){
+            $(x).removeClass('animated pulse');
+          }, 1000);
+        };
 
       $("#topall").hover(function(){
         setTimeout(function(){
@@ -244,5 +244,4 @@
       <p>G&Uuml;LP&#174; <?php echo date("Y")?> - Todos los derechos reservados.</p>
     </footer>   
   </body>
-  
 </html>

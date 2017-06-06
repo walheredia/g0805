@@ -15,8 +15,8 @@
       $descripcion = 'Descripcion';
     } else {
       $id_producto = $productos[0]['id_producto'];
-      $nombre = $productos[0]['nombre'];
-      $descripcion = $productos[0]['descripcion'];
+      $nombre = utf8_encode($productos[0]['nombre']);
+      $descripcion = utf8_encode($productos[0]['descripcion']);
     }
     
     //Descripciones
@@ -58,8 +58,8 @@
       $descripcion = 'Descripcion';
     } else {
       $id_producto = $productos[0]['id_producto'];
-      $nombre = $productos[0]['nombre'];
-      $descripcion = $productos[0]['descripcion'];
+      $nombre = utf8_encode($productos[0]['nombre']);
+      $descripcion = utf8_encode($productos[0]['descripcion']);
     }
     
     //Descripciones
@@ -93,6 +93,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>GÜLP</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -102,7 +103,7 @@
     <link rel="shortcut icon" href="images/icono.png">
 
   </head>
-  <body style="font-family: 'Cabin Condensed', sans-serif; background-image: url('images/background2.jpg');">
+  <body style="font-family: 'Cabin Condensed', sans-serif; background-image: url('images/background2.jpg'); background-attachment: fixed">
   <div id="topall" class="container nav-row animated fadeInDown" style="padding-top: 2px; width: 100%;">
     <div class="col-sm-12">
       <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 600; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
@@ -146,32 +147,38 @@
     				<a class="btn btn-default" href="index.php#productos">
 				    <i class="fa fa-hand-o-left fa-2x fa-align-left" title="Regresar a Inicio"></i>
 			  	</a>
-			  	<a class="btn btn-default" onclick="bajar();">
+			  	<a class="btn btn-default" onclick="bajar();" style="visibility: hidden;">
 				    	<i class="fa fa-arrow-left fa-2x fa-align-left" title="Producto Anterior"></i>
 		  			</a>
-		  			<a class="btn btn-default" onclick="subir();">
+		  			<a class="btn btn-default" onclick="subir();" style="visibility: hidden;">
 				    	<i class="fa fa-arrow-right fa-2x fa-align-left" title="Producto Siguiente"></i>
 		  			</a>	
     			</div>
           <div class="titulo" style="margin-top: -45px;" id="nombre"> <?php echo $nombre; ?></div>
           <div id="imagenes">
-            <img id="imagen_principal" src="images/<?php echo $multimedias[0]['multimedia']; ?>" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />
+            <div id="you"><img src="images/<?php echo $multimedias[0]["multimedia"]; ?>" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" /></div>
 
             <?php foreach ($multimedias as $m): ?>
-              <a onclick="cambiarimg('<?php echo $m['multimedia'] ?>');">
-                <img src="images/<?php echo $m['multimedia']; ?>" alt="banner1" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
-              </a>
+              <?php if (strpos($m['multimedia'], 'youtu') !== false): ?>
+                <a onclick="cambiarimg('<?php echo $m['multimedia'] ?>');">
+                  <img src="images/empty.png" alt="banner1" onmouseover="hoverim(this)" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
+                </a>
+              <?php else: ?>
+                <a onclick="cambiarimg('<?php echo $m['multimedia'] ?>');">
+                  <img src="images/<?php echo $m['multimedia']; ?>" alt="banner1" onmouseover="hoverim(this)" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
+                </a>
+              <?php endif ?>
             <?php endforeach ?>
           </div>
 
     		</div>
     		<div class="col-md-5" style="padding-top: 5px;">
     				
-        <input id="prod_id" type="" name="id_producto" value="<?php echo $id_producto; ?>">
+        <input id="prod_id" type="hidden" name="id_producto" value="<?php echo $id_producto; ?>">
           <div id="descripciones">
             <?php foreach ($descripciones as $d): ?>
               <div class="blockquote-reverse prodesc">
-                <i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> <?php echo $d['descripcion']; ?>
+                <i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> <?php echo utf8_encode($d['descripcion']); ?>
               </div>    
             <?php endforeach ?>
           </div>
@@ -184,7 +191,11 @@
   <script type="text/javascript">
 
       function cambiarimg($img) {
-        $('#imagen_principal').attr('src','images/'+$img);
+        if ($img.includes('youtu') == true) {
+          $('#you').html('<iframe width="600" height="500"  src="'+$img+'" frameborder="0" allowfullscreen></iframe>');
+        } else {
+          $('#you').html('<img id="imagen_principal" src="images/'+$img+'" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />');
+        }
       }
       function bajar() {
         $.ajax({
@@ -195,7 +206,6 @@
             var result = $.parseJSON(data);
             $('#prod_id').val(result[0]);
             $('#nombre').text(result[1]);
-
             $.ajax({
               url: 'ajax.php',
               type: 'POST',
@@ -232,6 +242,7 @@
           type: 'POST',
           data: 'subir_id='+$('#prod_id').val(),
           success: function(data) {
+            alert(data);
             var result = $.parseJSON(data);
             $('#prod_id').val(result[0]);
             $('#nombre').text(result[1]);
@@ -364,7 +375,13 @@
         }, 2000);
 
       });
-
+      function hoverim(x) {
+         $(x).addClass('animated pulse');
+        
+        setTimeout(function(){
+          $(x).removeClass('animated pulse');
+        }, 1000);
+      };
 
   </script>
 

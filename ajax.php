@@ -39,51 +39,90 @@ function subirprod($id) {
     $conn = new mysqli('localhost', 'root', 'root', 'gulp');
     $sql = "SELECT * from productos";
     $result = $conn->query($sql);
- 	while($row = $result->fetch_array()){
+ 	  while($row = $result->fetch_array()){
     	$productos[] = $row;
     }
     $conn->close();
-   	
-   	$bandera = 0;
-   	foreach ($productos as $p) {
-   		if ($bandera == 1) {
-   			$id_producto = $p['id_producto'];
-   			$nombre = $p['nombre'];
-   		}
-   		if ($p['id_producto'] == $id) {
-   			$bandera = 1;
-   		}
-   	}
-   	if (empty($nombre)) {
-   		return json_encode(array($productos[0]['id_producto'],$productos[0]['nombre']));
-   	} else {
-   		return json_encode(array($id_producto,$nombre));
-   	}
+
+    end($productos);
+    $ultimo = key($productos);
+
+    reset($productos);
+    $primer = key($productos);
+    $primer_id = $productos[$primer]['id_producto'];
+
+    $bandera = 1;
+    $i = 0;
+
+    while ($bandera == 1) {
+      if ($productos[$i]['id_producto'] === $id) {
+        return 'true';
+        if ($primer_id == $id) {
+          $id_p = $productos[$ultimo]['id_producto'];
+          $name = $productos[$ultimo]['nombre'];
+          $bandera = false;
+        } else {
+          $id_p = $productos[$i-1]['id_producto'];
+          $name = $productos[$i-1]['nombre'];
+          $bandera = false;
+        }
+      } else {
+        $i++;    
+      }
+    }
+    
+//$id_p = $productos[$found_key]['id_producto'];
+      //$name = $productos[$found_key]['nombre'];
+    return json_encode(array($id_p,$name));  
 }
 
 function bajarprod($id) {
-    $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+  $conn = new mysqli('localhost', 'root', 'root', 'gulp');
     $sql = "SELECT * from productos";
     $result = $conn->query($sql);
- 	while($row = $result->fetch_array()){
-    	$productos[] = $row;
+  while($row = $result->fetch_array()){
+      $productos[] = $row;
     }
     $conn->close();
-   	
-   	$bandera = 0;
-   	
-   	$id = $id - 1;
 
-   	if ($id == 0) {
-   		end($productos);
-	   	$key = key($productos);
-	   	$id_producto = $productos[$key]['id_producto'];
-	   	$nombre = $productos[$key]['nombre'];
-	   	return json_encode(array($id_producto,$nombre));
-   	} else {
-   		$found_key = array_search($id, array_column($productos, 'id_producto'));
-   		return json_encode(array($productos[$found_key]['id_producto'],$productos[$found_key]['nombre']));
-   	}
+    $bandera = 1;
+    end($productos);
+    $ultimo = key($productos);
+    reset($productos);
+
+    while ($bandera == 1) {
+      $key = key($productos);
+      if ($productos[$key]['id_producto'] == $id) {
+        prev($productos);
+        $id_baj = key($productos);
+        $id_p = $productos[$id_baj]['id_producto'];
+        $name = $productos[$id_baj]['nombre'];
+        $bandera = false;
+      } else {
+        if ($productos[$key]['id_producto'] == $ultimo) {
+          reset($productos);
+        } else {
+          next($productos);
+        }
+      }
+    }
+    return json_encode(array($id_p,$name)); 
+
+    /*$primero = key($productos);
+    end($productos);
+    $ultimo = key($productos);
+
+    $found_key = array_search($id, array_column($productos, 'id_producto'));
+    if ($primero == $found_key) {
+      $id_p = $productos[$ultimo]['id_producto'];
+      $name = $productos[$ultimo]['nombre'];            
+    } else {
+      $found_key--;  
+      $id_p = $productos[$found_key]['id_producto'];
+      $name = $productos[$found_key]['nombre'];
+    }
+
+    return json_encode(array($id_p,$name));  */
 }
 
 function cargardescripciones($id) {
@@ -100,7 +139,7 @@ function cargardescripciones($id) {
     $html = "";
 
     foreach ($descripciones as $d) {
-    	$html .='<div class="blockquote-reverse prodesc"><i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> '.$d['descripcion'].' </div>';
+    	$html .='<div class="blockquote-reverse prodesc"><i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> '.utf8_decode($d['descripcion']).' </div>';
     }
     return $html;
     
@@ -157,9 +196,9 @@ function cargarproductos($id) {
       $html .= '<div class="container" style="padding-bottom: 30px;">
                   <div class="row">';
       $html .= '<div class="col-md-3">
-                  <div class="nombre">'.$p["nombre"].'</div>
-                  <div class="descripcion">'.$p["descripcion"].'</div>
-                  <img src="images/'.$multimedias[0]["multimedia"].'" id="1" onmouseover="hoverim(this)" onclick="window.open(';
+                  <div class="nombre">'.utf8_encode($p["nombre"]).'</div>
+                  <div class="descripcion">'.utf8_encode($p["descripcion"]).'</div>
+                  <img src="images/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
       $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
       $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
                 </div>';
@@ -167,9 +206,9 @@ function cargarproductos($id) {
 
     } else {
       $html .= '<div class="col-md-3">
-                  <div class="nombre">'.$p["nombre"].'</div>
-                  <div class="descripcion">'.$p["descripcion"].'</div>
-                  <img src="images/'.$multimedias[0]["multimedia"].'" id="1" onmouseover="hoverim(this)" onclick="window.open(';
+                  <div class="nombre">'.utf8_encode($p["nombre"]).'</div>
+                  <div class="descripcion">'.utf8_encode($p["descripcion"]).'</div>
+                  <img src="images/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
       $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
       $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
                 </div>';
