@@ -71,7 +71,7 @@
               <td>Nombre del Producto</td>
               <td>Descripcion</td>
               <td>
-                <a title="editar" href="" onclick="alert('edit');"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="descripciones (párrafos)" href="" onclick="alert('edit');"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="imagenes" href="" onclick="alert('edit');"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
@@ -82,7 +82,7 @@
               <td>Nombre del Producto</td>
               <td>Descripcion</td>
               <td>
-                <a title="editar" href="" onclick="alert('edit');"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="descripciones (párrafos)" href="" onclick="alert('edit');"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="imagenes" href="" onclick="alert('edit');"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
@@ -93,7 +93,7 @@
               <td>Nombre del Producto</td>
               <td>Descripcion</td>
               <td>
-                <a title="editar" href="" onclick="alert('edit');"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="descripciones (párrafos)" href="" onclick="alert('edit');"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="imagenes" href="" onclick="alert('edit');"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
@@ -105,20 +105,26 @@
         <hr>
         <h3 class="text-center"><strong>Insertar producto nuevo</strong></h3>
         <form class="form-horizontal center-block" action="menu_productos.php" method="post">
+        <input type="hidden" class="form-control" id="id_producto" name="id_producto" value="">
           <div class="form-group" style="margin: 1px 4px 0px 4px;">
             <div class="col-sm-6">
               <label class="">Nombre</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" required>
+              <input type="text" class="form-control" id="nombre" name="nombre" required value="">
             </div>
             <div class="col-sm-6">
               <label class="">Descripcion</label>
-              <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+              <input type="text" class="form-control" id="descripcion" name="descripcion" required value="">
             </div>
           </div>
         </div>
         <div class="form-group" style="padding-top: 20px;">
           <div class="col-sm-12">
-            <input style="margin-top: 5px;" type="submit" id="submit" name="submit" value="Guardar Imagen" class="btn btn-primary form-control">
+            <input style="margin-top: 5px;" type="submit" id="submit" name="submit" value="Guardar Producto" class="btn btn-primary form-control">
+          </div>
+        </div>
+        <div class="form-group" style="padding-top: 20px;">
+          <div class="col-sm-2 pull-right">
+            <input style="margin-top: 5px; visibility: hidden;" onclick="limpiar();" type="button" id="insertar" name="submit" value="Insertar nuevo" class="btn btn-success form-control">
           </div>
         </div>
         </form>
@@ -127,7 +133,30 @@
 <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-
+  function editar(){
+    $.ajax({
+      url: 'ajax.php',
+      type: 'POST',
+      data: 'cargar_menu_producto=1',
+      success: function(data) {
+        $("#id_producto").val('asd');
+        $("#nombre").val('asd');
+        $("#descripcion").val('asd');
+        $("#submit").val('Actualizar Producto');
+        $("#insertar").css('visibility', 'visible');
+      },
+      error: function(){
+      alert('Error!');
+      }
+    });
+  }
+  function limpiar(){
+    $("#id_producto").val('');
+    $("#nombre").val('');
+    $("#descripcion").val('');
+    $("#submit").val('Guardar Producto');
+    $("#insertar").css('visibility', 'hidden');
+  }
 	$(function () {
 		<?php if(isset($_GET['err'])): ?>
 			alert('Credenciales Incorrectas');

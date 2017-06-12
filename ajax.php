@@ -23,6 +23,9 @@ if(isset($_POST['cargar_imagenes'])) {
 if(isset($_POST['cargar_productos'])) {
   echo cargarproductos($_POST['cargar_productos']);
 }
+if(isset($_POST['cargar_menu_producto'])) {
+  echo cargar_menu_producto($_POST['cargar_menu_producto']);
+}
 
 function cargarprod($id) {
     $conn = new mysqli('localhost', 'root', 'root', 'gulp');
@@ -221,5 +224,9 @@ function cargarproductos($id) {
   }
   $conn->close();
   return $html;
+}
+
+function cargar_menu_producto($id) {
+  return 'true';
 }
 ?>
