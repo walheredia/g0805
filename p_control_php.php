@@ -1,4 +1,5 @@
 <?php 
+
   // Recibo los datos de la imagen
   $nombre_img = $_FILES['imagen']['name'];
   $tipo = $_FILES['imagen']['type'];
@@ -13,9 +14,11 @@
      || ($_FILES["imagen"]["type"] == "image/png"))
      {
         // Ruta donde se guardarán las imágenes que subamos
-        $directorio = $_SERVER['DOCUMENT_ROOT'].'/test_upload/';
+        $directorio = $_SERVER['DOCUMENT_ROOT'].'/g0805/test_upload/';
         // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
-        move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+        $hoy = getdate();
+        $date = $hoy['year'].$hoy['mon'].$hoy['mday'].$hoy['hours'].$hoy['minutes'].$hoy['seconds'];
+        move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$date.$nombre_img);
       } 
       else 
       {
