@@ -73,7 +73,7 @@
               <td>
                 <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="descripciones (párrafos)" href="" onclick="window.location.replace('descripciones_productos.php'); return false;"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="imagenes" href="" onclick="alert('edit');"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="imagenes" href="" onclick="window.location.replace('imagenes_productos.php'); return false;"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
               </td>
             </tr>
@@ -84,7 +84,7 @@
               <td>
                 <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="descripciones (párrafos)" href="" onclick="window.location.replace('descripciones_productos.php'); return false;"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="imagenes" href="" onclick="alert('edit');"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="imagenes" href="" onclick="window.location.replace('imagenes_productos.php'); return false;"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
               </td>
             </tr>
@@ -95,7 +95,7 @@
               <td>
                 <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="descripciones (párrafos)" href="" onclick="window.location.replace('descripciones_productos.php'); return false;"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="imagenes" href="" onclick="alert('edit');"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="imagenes" href="" onclick="window.location.replace('imagenes_productos.php'); return false;"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
               </td>
             </tr>

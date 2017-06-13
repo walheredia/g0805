@@ -53,40 +53,37 @@
     </div>
   </nav>
       <div class="container">
-      <div class=""><a href="menu_productos.php" title="Volver"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="font-size: 35px;"></i></a></div>
-        <h3 class="text-center" style="padding-bottom: 20px;"><strong>Descripciones del producto:</strong> producto</h3>
+        <div class=""><a href="menu_productos.php" title="Volver"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="font-size: 35px;"></i></a></div>
+        <h3 class="text-center" style="padding-bottom: 20px;"><strong>Imagenes del producto:</strong> producto</h3>
     </div>
     <div style="width: 80%;" class="center-block">
         <table class="table">
           <thead>
             <tr>
               <th>#</th>
-              <th>Descripciones</th>
+              <th>Imagenes</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Descripcion</td>
+              <td>Imagen</td>
               <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
               </td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Descripcion</td>
+              <td>Imagen</td>
               <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
               </td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>Descripcion</td>
+              <td>Imagen</td>
               <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
                 <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
               </td>
             </tr>
@@ -94,26 +91,14 @@
         </table> 
         <div class="">
         <hr>
-        <h3 class="text-center"><strong>Insertar descripcion nueva</strong></h3>
-        <form class="form-horizontal center-block" action="menu_productos.php" method="post">
-        <input type="hidden" class="form-control" id="id_descripcion" name="id_descripcion" value="">
-          <div class="form-group" style="margin: 1px 4px 0px 4px;">
+        <h3 class="text-center"><strong>Insertar imagen nueva</strong></h3>
+        <form class="form-horizontal center-block" style="max-width: 900px; margin-top: -20px;" action="p_control_php.php" enctype="multipart/form-data" method="post">
+          <div class="form-group" style="padding-top: 20px;">
             <div class="col-sm-12">
-              <label class="">Descripción</label>
-              <textarea class="form-control" id="descripcion" name="descripcion" value="" required></textarea>
+              <input class="" id="imagen" name="imagen" size="30" type="file" />
+              <input style="margin-top: 5px;" type="submit" id="submit" name="submit" value="Guardar Imagen" class="btn btn-primary form-control">
             </div>
           </div>
-        </div>
-        <div class="form-group" style="padding-top: 20px;">
-          <div class="col-sm-12">
-            <input style="margin-top: 5px;" type="submit" id="submit" name="submit" value="Guardar Descripcion" class="btn btn-primary form-control">
-          </div>
-        </div>
-        <div class="form-group" style="padding-top: 20px;">
-          <div class="col-sm-2 pull-right">
-            <input style="margin-top: 5px; visibility: hidden;" onclick="limpiar();" type="button" id="insertar" name="submit" value="Insertar nueva" class="btn btn-success form-control">
-          </div>
-        </div>
         </form>
     </div>
 </body>
