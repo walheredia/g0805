@@ -78,6 +78,7 @@
           </tbody>
         </table>
         <form class="form-horizontal center-block" style="max-width: 900px; margin-top: -20px;" action="p_control_php.php" enctype="multipart/form-data" method="post">
+        <input type="hidden" class="form-control" id="id_producto" name="id_producto" value="<?php echo $id_producto; ?>" style="width: 100px;">
           <div class="form-group" style="padding-top: 20px;">
             <div class="col-sm-12">
               <input class="" id="imagen" name="imagen" size="30" type="file" />

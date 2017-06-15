@@ -30,6 +30,19 @@ if(isset($_POST['eliminar_producto'])) {
   echo eliminar_producto($_POST['eliminar_producto']);
 }
 
+if(isset($_POST['cargar_menu_descripcion'])) {
+  echo cargar_menu_descripcion($_POST['cargar_menu_descripcion']);
+}
+
+if(isset($_POST['eliminar_descripcion'])) {
+  echo eliminar_descripcion($_POST['eliminar_descripcion']);
+}
+
+if(isset($_POST['eliminar_imagen'])) {
+  echo eliminar_imagen($_POST['eliminar_imagen']);
+}
+
+
 function cargarprod($id) {
     $conn = new mysqli('localhost', 'root', '', 'gulp');
     $sql = "SELECT * from productos where id_producto = ".$id;
@@ -163,7 +176,7 @@ function cargarimagenes($id) {
       $multimedias[0]['multimedia'] = "empty.png";
     }
 
-    $html = '<img id="imagen_principal" src="images/'.$multimedias[0]["multimedia"].'" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />';
+    $html = '<img id="imagen_principal" src="images/products/'.$multimedias[0]["multimedia"].'" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />';
     foreach ($multimedias as $m) {
     	$html .= '<a onclick="cambiarimg(';
     	$html .= "'".$m['multimedia']."');";
@@ -197,16 +210,16 @@ function cargarproductos($id) {
         $multimedias[] = $row;
       }
       if (empty($multimedias)) {
-        $multimedias[0]['multimedia'] = "empty.png";
+        $multimedias[0]['multimedia'] = "../empty.png";
       }
 
       if ($cant == 0) {
         $html .= '<div class="container" style="padding-bottom: 30px;">
                     <div class="row">';
         $html .= '<div class="col-md-3">
-                    <div class="nombre">'.utf8_encode($p["nombre"]).'</div>
-                    <div class="descripcion">'.utf8_encode($p["descripcion"]).'</div>
-                    <img src="images/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
+                    <div class="nombre">'.$p["nombre"].'</div>
+                    <div class="descripcion">'.$p["descripcion"].'</div>
+                    <img src="images/products/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
         $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
         $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
                   </div>';
@@ -214,9 +227,9 @@ function cargarproductos($id) {
 
       } else {
         $html .= '<div class="col-md-3">
-                    <div class="nombre">'.utf8_encode($p["nombre"]).'</div>
-                    <div class="descripcion">'.utf8_encode($p["descripcion"]).'</div>
-                    <img src="images/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
+                    <div class="nombre">'.$p["nombre"].'</div>
+                    <div class="descripcion">'.$p["descripcion"].'</div>
+                    <img src="images/products/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
         $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
         $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
                   </div>';
@@ -252,6 +265,30 @@ function eliminar_producto($id) {
   $result = $conn->query($sql1);
   $result = $conn->query($sql2);
   $result = $conn->query($sql3);
+  return;
+}
+
+function cargar_menu_descripcion($id) {
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $sql = "SELECT * from producto_descripcion where id_descripcion=".$id;
+  $result = $conn->query($sql);
+   while($row = $result->fetch_array()){
+  $descripcion[] = $row;
+  }
+  return json_encode($descripcion);
+}
+
+function eliminar_descripcion($id) {
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $sql1 = "DELETE FROM producto_descripcion WHERE id_descripcion=".$id;
+  $result = $conn->query($sql1);
+  return;
+}
+
+function eliminar_imagen($id) {
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $sql1 = "DELETE FROM producto_multimedia WHERE id_multimedia=".$id;
+  $result = $conn->query($sql1);
   return;
 }
 ?>

@@ -8,8 +8,51 @@
   //Fin chequeo de Sesión
 ?>
 <?php 
-  if ((isset($_POST['nombre']) && (isset($_POST['descripcion'])))) {
-    echo "Guardar acá";die();
+  if (isset($_GET["p"])) {
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
+    //Nombre del producto
+    $sql0 = "SELECT * from productos where id_producto = ".$_GET['p'];
+    $nombre = $conn->query($sql0);
+    while($row = $nombre->fetch_array()){
+      $nombres[] = $row;
+    }
+
+    $nombre_producto = $nombres[0]['nombre'];
+    $id_producto = $nombres[0]['id_producto'];
+
+    //Multimedia
+    $sql1 = "SELECT * from producto_multimedia where id_producto = ".$_GET['p'];
+    $desc = $conn->query($sql1);
+    while($row = $desc->fetch_array()){
+      $multimedia[] = $row;
+    }
+    $html="";
+    try {
+      if (!empty($multimedia)) {
+        $html.='<table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Imágenes/Videos</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>';
+      foreach ($multimedia as $m) {
+        $html.='<tr>
+                <th scope="row">'.$m['id_multimedia'].'</th>
+                <td><img src="images/products/'.$m["multimedia"].'" alt="banner1" class="img-responsive img-rounded" style="width: 50px; height: 50px;" /></td>
+                <td>
+                  <a title="eliminar" href="" onclick="confirmar('."'".$m['id_multimedia']."'".'); return false;"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
+                </td>
+              </tr>';
+      }
+      $html .='</tbody>
+            </table>';  
+      }
+    } catch (Exception $e) {
+         
+    }
   }
 ?>
 <!DOCTYPE html>
@@ -53,46 +96,16 @@
     </div>
   </nav>
       <div class="container">
-        <div class=""><a href="menu_productos.php" title="Volver"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="font-size: 35px;"></i></a></div>
-        <h3 class="text-center" style="padding-bottom: 20px;"><strong>Imagenes del producto:</strong> producto</h3>
+        <div class=""><a href="menu_productos.php" title="Regresar"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="font-size: 35px;"></i></a></div>
+        <h3 class="text-center" style="padding-bottom: 20px;"><strong>Imagenes/Videos del producto:</strong> <?php echo $nombre_producto; ?></h3>
     </div>
     <div style="width: 80%;" class="center-block">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Imagenes</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Imagen</td>
-              <td>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Imagen</td>
-              <td>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Imagen</td>
-              <td>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table> 
+    <?php echo $html; ?>
         <div class="">
         <hr>
         <h3 class="text-center"><strong>Insertar imagen nueva</strong></h3>
-        <form class="form-horizontal center-block" style="max-width: 900px; margin-top: -20px;" action="p_control_php.php" enctype="multipart/form-data" method="post">
+        <form class="form-horizontal center-block" style="max-width: 900px; margin-top: -20px;" action="imagenes_productos_upload.php" enctype="multipart/form-data" method="post">
+        <input type="hidden" class="form-control" id="id_producto" name="id_producto" value="<?php echo $id_producto; ?>" style="width: 100px;">
           <div class="form-group" style="padding-top: 20px;">
             <div class="col-sm-12">
               <input class="" id="imagen" name="imagen" size="30" type="file" />
@@ -134,5 +147,20 @@
 			alert('Credenciales Incorrectas');
 		<?php endif ?>
 	});
+  function confirmar(id){
+    if (confirm('¿Realmente desea eliminar el archivo?')) {
+      $.ajax({
+        url: 'ajax.php',
+        type: 'POST',
+        data: 'eliminar_imagen='+id,
+        success: function(data) {
+          location.reload();
+        },
+        error: function(){
+        alert('Error!');
+        }
+      });
+    }
+  }
 </script>
 </html>

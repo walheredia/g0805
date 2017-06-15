@@ -80,7 +80,7 @@
                     <div class="form-group">
                     </div>
                         <div class="col-sm-12" style="padding-top: 15px;">
-                            <input type="submit" value="Iniciar Sesión" class="btn btn-success form-control">
+                            <input type="submit" value="Iniciar Sesión" class="btn btn-danger form-control">
                         </div>
                     </div>
                 </form>

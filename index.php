@@ -70,7 +70,7 @@
           <li data-target="#myCarousel" data-slide-to="3"></li>
           <li data-target="#myCarousel" data-slide-to="4"></li>
         </ol>
-        <!-- Carousel items -->
+        
         <div class="carousel-inner">
           <div class="active item"><img  src="images/pr2.jpg" alt="banner1" class="img-responsive center-block animated bounceInRight" /></div>
           <div class="item"><img src="images/pr2.jpg" alt="banner2" class="img-responsive center-block animated bounceInRight" /></div>
@@ -78,10 +78,10 @@
           <div class="item"><img src="images/pr2.jpg" alt="banner4" class="img-responsive center-block animated bounceInRight" /></div>
           <div class="item"><img src="images/pr2.jpg" alt="banner5" class="img-responsive center-block animated bounceInRight" /></div>
         </div>
-        <!-- Carousel nav 
+
         <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        -->
+        
       </div>
   </div>
   <img id="iso" src="images/iso_tr_nuevo.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 7px; padding-bottom: 7px; width: 60px;" />

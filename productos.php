@@ -15,8 +15,8 @@
       $descripcion = 'Descripcion';
     } else {
       $id_producto = $productos[0]['id_producto'];
-      $nombre = utf8_encode($productos[0]['nombre']);
-      $descripcion = utf8_encode($productos[0]['descripcion']);
+      $nombre = $productos[0]['nombre'];
+      $descripcion = $productos[0]['descripcion'];
     }
     
     //Descripciones
@@ -36,7 +36,7 @@
       $multimedias[] = $row;
     }
     if (empty($multimedias)) {
-      $multimedias[0]['multimedia']= "empty.png";
+      $multimedias[0]['multimedia']= "../empty.png";
     }
 
     //Cierro conexion
@@ -58,8 +58,8 @@
       $descripcion = 'Descripcion';
     } else {
       $id_producto = $productos[0]['id_producto'];
-      $nombre = utf8_encode($productos[0]['nombre']);
-      $descripcion = utf8_encode($productos[0]['descripcion']);
+      $nombre = $productos[0]['nombre'];
+      $descripcion = $productos[0]['descripcion'];
     }
     
     //Descripciones
@@ -156,16 +156,16 @@
     			</div>
           <div class="titulo" style="margin-top: -45px;" id="nombre"> <?php echo $nombre; ?></div>
           <div id="imagenes">
-            <div id="you"><img src="images/<?php echo $multimedias[0]["multimedia"]; ?>" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" /></div>
+            <div id="you"><img src="images/products/<?php echo $multimedias[0]["multimedia"]; ?>" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" /></div>
 
             <?php foreach ($multimedias as $m): ?>
               <?php if (strpos($m['multimedia'], 'youtu') !== false): ?>
                 <a onclick="cambiarimg('<?php echo $m['multimedia'] ?>');">
-                  <img src="images/empty.png" alt="banner1" onmouseover="hoverim(this)" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
+                  <img src="images/products/empty.png" alt="banner1" onmouseover="hoverim(this)" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
                 </a>
               <?php else: ?>
                 <a onclick="cambiarimg('<?php echo $m['multimedia'] ?>');">
-                  <img src="images/<?php echo $m['multimedia']; ?>" alt="banner1" onmouseover="hoverim(this)" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
+                  <img src="images/products/<?php echo $m['multimedia']; ?>" alt="banner1" onmouseover="hoverim(this)" class="center-block img-thumbnail" style="width: 89.5px; height: 89.5px; display: inline;"/>
                 </a>
               <?php endif ?>
             <?php endforeach ?>
@@ -178,7 +178,7 @@
           <div id="descripciones">
             <?php foreach ($descripciones as $d): ?>
               <div class="blockquote-reverse prodesc">
-                <i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> <?php echo utf8_encode($d['descripcion']); ?>
+                <i class="fa fa-circle fa-1x fa-fw" aria-hidden="true"></i> <?php echo $d['descripcion']; ?>
               </div>    
             <?php endforeach ?>
           </div>
@@ -194,7 +194,7 @@
         if ($img.includes('youtu') == true) {
           $('#you').html('<iframe width="600" height="500"  src="'+$img+'" frameborder="0" allowfullscreen></iframe>');
         } else {
-          $('#you').html('<img id="imagen_principal" src="images/'+$img+'" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />');
+          $('#you').html('<img id="imagen_principal" src="images/products/'+$img+'" alt="banner1" class="img-responsive center-block img-thumbnail" style="width: 750px; height: 550px; margin-bottom: 10px;" />');
         }
       }
       function bajar() {

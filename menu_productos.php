@@ -15,7 +15,8 @@
   $productos[] = $row;
   }
   $html = "";
-  $html .= '<table class="table">
+  if (!empty($productos)) {
+    $html .= '<table class="table">
               <thead>
                 <tr>
                   <th>#</th>
@@ -41,6 +42,7 @@
   $html .= '</tbody>
             </table>';
   $conn->close();
+  }
 
   if ((isset($_POST['nombre']) && (isset($_POST['descripcion'])))) {
     if (empty($_POST['id_producto'])) {
