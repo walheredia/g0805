@@ -1,7 +1,7 @@
 <?php 
   if(isset($_GET["p"])) {
     //Conexion
-    $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
 
     //Producto
     $sql = "SELECT * from productos where id_producto = ".$_GET['p'];
@@ -44,7 +44,7 @@
 
   } else {
     //Conexion
-    $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
 
     //Producto
     $sql = "SELECT * from productos where id_producto = 1";

@@ -26,9 +26,12 @@ if(isset($_POST['cargar_productos'])) {
 if(isset($_POST['cargar_menu_producto'])) {
   echo cargar_menu_producto($_POST['cargar_menu_producto']);
 }
+if(isset($_POST['eliminar_producto'])) {
+  echo eliminar_producto($_POST['eliminar_producto']);
+}
 
 function cargarprod($id) {
-    $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
     $sql = "SELECT * from productos where id_producto = ".$id;
     $result = $conn->query($sql);
      while($row = $result->fetch_array()){
@@ -39,7 +42,7 @@ function cargarprod($id) {
 }
 
 function subirprod($id) {
-    $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
     $sql = "SELECT * from productos";
     $result = $conn->query($sql);
  	  while($row = $result->fetch_array()){
@@ -80,7 +83,7 @@ function subirprod($id) {
 }
 
 function bajarprod($id) {
-  $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
     $sql = "SELECT * from productos";
     $result = $conn->query($sql);
   while($row = $result->fetch_array()){
@@ -130,7 +133,7 @@ function bajarprod($id) {
 
 function cargardescripciones($id) {
 	//Descripciones
-	$conn = new mysqli('localhost', 'root', 'root', 'gulp');
+	$conn = new mysqli('localhost', 'root', '', 'gulp');
     $sql1 = "SELECT * from producto_descripcion where id_producto = ".$id;
     $desc = $conn->query($sql1);
     while($row = $desc->fetch_array()){
@@ -150,7 +153,7 @@ function cargardescripciones($id) {
 
 function cargarimagenes($id) {
 	//Multimedia
-	$conn = new mysqli('localhost', 'root', 'root', 'gulp');
+	$conn = new mysqli('localhost', 'root', '', 'gulp');
     $sql2 = "SELECT * from producto_multimedia where id_producto = ".$id;
     $mult = $conn->query($sql2);
     while($row = $mult->fetch_array()){
@@ -172,7 +175,7 @@ function cargarimagenes($id) {
 }
 
 function cargarproductos($id) {
-  $conn = new mysqli('localhost', 'root', 'root', 'gulp');
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
   $sql = "SELECT * from productos";
   $result = $conn->query($sql);
    while($row = $result->fetch_array()){
@@ -180,53 +183,75 @@ function cargarproductos($id) {
   }
   $html = "";
   $cant = 0;
-  end($productos);
-  $key = key($productos);
-  $last_id = $productos[$key]['id_producto'];
 
-  foreach ($productos as $p) {
-    $multimedias="";
-    $sql2 = "SELECT * from producto_multimedia where id_producto = ".$p['id_producto'];
-    $mult = $conn->query($sql2);
-    while($row = $mult->fetch_array()){
-      $multimedias[] = $row;
-    }
-    if (empty($multimedias)) {
-      $multimedias[0]['multimedia'] = "empty.png";
-    }
+  try {
+    end($productos);
+    $key = key($productos);
+    $last_id = $productos[$key]['id_producto'];
 
-    if ($cant == 0) {
-      $html .= '<div class="container" style="padding-bottom: 30px;">
-                  <div class="row">';
-      $html .= '<div class="col-md-3">
-                  <div class="nombre">'.utf8_encode($p["nombre"]).'</div>
-                  <div class="descripcion">'.utf8_encode($p["descripcion"]).'</div>
-                  <img src="images/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
-      $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
-      $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
-                </div>';
-      $cant++;
+    foreach ($productos as $p) {
+      $multimedias="";
+      $sql2 = "SELECT * from producto_multimedia where id_producto = ".$p['id_producto'];
+      $mult = $conn->query($sql2);
+      while($row = $mult->fetch_array()){
+        $multimedias[] = $row;
+      }
+      if (empty($multimedias)) {
+        $multimedias[0]['multimedia'] = "empty.png";
+      }
 
-    } else {
-      $html .= '<div class="col-md-3">
-                  <div class="nombre">'.utf8_encode($p["nombre"]).'</div>
-                  <div class="descripcion">'.utf8_encode($p["descripcion"]).'</div>
-                  <img src="images/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
-      $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
-      $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
-                </div>';
-      $cant++;
+      if ($cant == 0) {
+        $html .= '<div class="container" style="padding-bottom: 30px;">
+                    <div class="row">';
+        $html .= '<div class="col-md-3">
+                    <div class="nombre">'.utf8_encode($p["nombre"]).'</div>
+                    <div class="descripcion">'.utf8_encode($p["descripcion"]).'</div>
+                    <img src="images/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
+        $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
+        $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
+                  </div>';
+        $cant++;
+
+      } else {
+        $html .= '<div class="col-md-3">
+                    <div class="nombre">'.utf8_encode($p["nombre"]).'</div>
+                    <div class="descripcion">'.utf8_encode($p["descripcion"]).'</div>
+                    <img src="images/'.$multimedias[0]["multimedia"].'" id="1" style="height: 250px;" onmouseover="hoverim(this)" onclick="window.open(';
+        $html .= "'productos.php?p=".$p["id_producto"]."','_self'";
+        $html .= ');" alt="banner1" class="img-responsive img-rounded"/>
+                  </div>';
+        $cant++;
+      }
+      if (($cant == 4) or ($p['id_producto'] == $last_id)) {
+        $html .= '</div></div>';
+        $cant = 0;
+      }
     }
-    if (($cant == 4) or ($p['id_producto'] == $last_id)) {
-      $html .= '</div></div>';
-      $cant = 0;
-    }
+    $conn->close();
+  } catch (Exception $e) {
+    
   }
-  $conn->close();
   return $html;
 }
 
 function cargar_menu_producto($id) {
-  return 'true';
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $sql = "SELECT * from productos where id_producto=".$id;
+  $result = $conn->query($sql);
+   while($row = $result->fetch_array()){
+  $productos[] = $row;
+  }
+  return json_encode($productos);
+}
+
+function eliminar_producto($id) {
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $sql1 = "DELETE FROM producto_descripcion WHERE id_producto=".$id;
+  $sql2 = "DELETE FROM producto_multimedia WHERE id_producto=".$id;
+  $sql3 = "DELETE FROM productos WHERE id_producto=".$id;
+  $result = $conn->query($sql1);
+  $result = $conn->query($sql2);
+  $result = $conn->query($sql3);
+  return;
 }
 ?>

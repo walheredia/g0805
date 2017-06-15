@@ -11,6 +11,42 @@
   if ((isset($_POST['nombre']) && (isset($_POST['descripcion'])))) {
     echo "Guardar acá";die();
   }
+  if (isset($_GET["p"])) {
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
+    //Descripciones
+    $sql1 = "SELECT * from producto_descripcion where id_producto = ".$_GET['p'];
+    $desc = $conn->query($sql1);
+    while($row = $desc->fetch_array()){
+      $descripciones[] = $row;
+    }
+    $html="";
+    try {
+      
+    } catch (Exception $e) {
+      $html.='<table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Descripciones</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>';
+      foreach ($descripciones as $d) {
+        $html.='<tr>
+                <th scope="row">1</th>
+                <td>Descripcion</td>
+                <td>
+                  <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
+                  <a title="eliminar" href="" onclick="alert("delete");"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
+                </td>
+              </tr>';
+      }
+      $html .='</tbody>
+            </table>';      
+    }
+
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,41 +93,8 @@
         <h3 class="text-center" style="padding-bottom: 20px;"><strong>Descripciones del producto:</strong> producto</h3>
     </div>
     <div style="width: 80%;" class="center-block">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Descripciones</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Descripcion</td>
-              <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Descripcion</td>
-              <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Descripcion</td>
-              <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table> 
+        <?php 
+        echo $html; ?>
         <div class="">
         <hr>
         <h3 class="text-center"><strong>Insertar descripcion nueva</strong></h3>

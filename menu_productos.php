@@ -7,9 +7,70 @@
     }
   //Fin chequeo de Sesión
 ?>
-<?php 
+<?php
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $sql_prod = "SELECT * from productos";
+  $result = $conn->query($sql_prod);
+   while($row = $result->fetch_array()){
+  $productos[] = $row;
+  }
+  $html = "";
+  $html .= '<table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Producto</th>
+                  <th>Descripcion</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>';
+  foreach ($productos as $p) {
+    $html .= '<tr>
+                <th scope="row">'.$p["id_producto"].'</th>
+                <td>'.$p["nombre"].'</td>
+                <td>'.$p["descripcion"].'</td>
+              <td>
+                <a title="editar" href="" onclick="editar('.$p["id_producto"].'); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="descripciones (párrafos)" href="" onclick="'."window.location.replace('descripciones_productos.php?p=".$p['id_producto']."')".'; return false;"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="imagenes" href="" onclick="'."window.location.replace('imagenes_productos.php?p=".$p['id_producto']."')".'; return false;"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
+                <a title="eliminar" id= href="" onclick="confirmar('.$p["id_producto"].');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
+              </td>
+            </tr>';
+  }
+  $html .= '</tbody>
+            </table>';
+  $conn->close();
+
   if ((isset($_POST['nombre']) && (isset($_POST['descripcion'])))) {
-    echo "Guardar acá";die();
+    if (empty($_POST['id_producto'])) {
+      $conn = new mysqli('localhost', 'root', '', 'gulp');
+      $sql = "INSERT INTO productos(nombre, descripcion)
+              VALUES (
+              '".$_POST['nombre']."',
+              '".$_POST['descripcion']."'
+              );";
+      if ($conn->query($sql) === TRUE) {
+        header('Location: '. 'menu_productos.php');
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+      $conn->close();
+    } else {
+      $conn = new mysqli('localhost', 'root', '', 'gulp');
+      $sql = "UPDATE productos
+              SET 
+              nombre='".$_POST['nombre']."',
+              descripcion='".$_POST['descripcion']."'
+              WHERE id_producto=".$_POST['id_producto']."
+              ";
+      if ($conn->query($sql) === TRUE) {
+        header('Location: '. 'menu_productos.php');
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+      $conn->close();
+    }
   }
 ?>
 <!DOCTYPE html>
@@ -56,51 +117,7 @@
         <h3 class="text-center" style="padding-bottom: 20px;"><strong>Productos disponibles</strong></h3>
     </div>
     <div style="width: 80%;" class="center-block">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Producto</th>
-              <th>Descripcion</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Nombre del Producto</td>
-              <td>Descripcion</td>
-              <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="descripciones (párrafos)" href="" onclick="window.location.replace('descripciones_productos.php'); return false;"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="imagenes" href="" onclick="window.location.replace('imagenes_productos.php'); return false;"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Nombre del Producto</td>
-              <td>Descripcion</td>
-              <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="descripciones (párrafos)" href="" onclick="window.location.replace('descripciones_productos.php'); return false;"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="imagenes" href="" onclick="window.location.replace('imagenes_productos.php'); return false;"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Nombre del Producto</td>
-              <td>Descripcion</td>
-              <td>
-                <a title="editar" href="" onclick="editar(); return false;"><i class="fa fa-edit" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="descripciones (párrafos)" href="" onclick="window.location.replace('descripciones_productos.php'); return false;"><i class="fa fa-file-text" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="imagenes" href="" onclick="window.location.replace('imagenes_productos.php'); return false;"><i class="fa fa-picture-o" aria-hidden="true" style="font-size: 18px;"></i></a>
-                <a title="eliminar" href="" onclick="alert('delete');"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table> 
+        <?php echo $html; ?> 
         <div class="">
         <hr>
         <h3 class="text-center"><strong>Insertar producto nuevo</strong></h3>
@@ -109,11 +126,11 @@
           <div class="form-group" style="margin: 1px 4px 0px 4px;">
             <div class="col-sm-6">
               <label class="">Nombre</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" required value="">
+              <input type="text" class="form-control" id="nombre" name="nombre" required value="" maxlength="27">
             </div>
             <div class="col-sm-6">
               <label class="">Descripcion</label>
-              <input type="text" class="form-control" id="descripcion" name="descripcion" required value="">
+              <input type="text" class="form-control" id="descripcion" name="descripcion" required value="" maxlength="27">
             </div>
           </div>
         </div>
@@ -133,15 +150,16 @@
 <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-  function editar(){
+  function editar(id){
     $.ajax({
       url: 'ajax.php',
       type: 'POST',
-      data: 'cargar_menu_producto=1',
+      data: 'cargar_menu_producto='+id,
       success: function(data) {
-        $("#id_producto").val('asd');
-        $("#nombre").val('asd');
-        $("#descripcion").val('asd');
+        var obj = $.parseJSON(data);
+        $("#id_producto").val(obj[0].id_producto);
+        $("#nombre").val(obj[0].nombre);
+        $("#descripcion").val(obj[0].descripcion);
         $("#submit").val('Actualizar Producto');
         $("#insertar").css('visibility', 'visible');
       },
@@ -162,5 +180,21 @@
 			alert('Credenciales Incorrectas');
 		<?php endif ?>
 	});
+
+  function confirmar(id){
+    if (confirm('¿Realmente desea eliminar el producto? (Todas las descripciones e imágenes del producto serán eliminadas)')) {
+      $.ajax({
+        url: 'ajax.php',
+        type: 'POST',
+        data: 'eliminar_producto='+id,
+        success: function(data) {
+          location.reload();
+        },
+        error: function(){
+        alert('Error!');
+        }
+      });
+    }
+  }
 </script>
 </html>
