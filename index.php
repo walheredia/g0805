@@ -1,3 +1,45 @@
+<?php 
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+    //Nombre del producto
+    $sql0 = "SELECT * from carrusel";
+    $carr = $conn->query($sql0);
+    while($row = $carr->fetch_array()){
+      $carrusel[] = $row;
+    }
+    $html="";
+    $cant = 0;    
+
+    try {
+      if (!empty($carrusel)) {
+        $html .= '<ol class="carousel-indicators">';
+        foreach ($carrusel as $c) {
+          if ($cant == 0) {
+            $html .='<li data-target="#myCarousel" data-slide-to="'.$cant.'" class="active"></li>';
+          } else {
+            $html .='<li data-target="#myCarousel" data-slide-to="'.$cant.'"></li>';
+          }
+          $cant++;
+        }
+        $html .= "</ol>";
+        
+        $html .= '<div class="carousel-inner">';
+        $cant = 0;
+        foreach ($carrusel as $c) {
+          if ($cant == 0) {
+            $html .= '<div class="active item"><img src="images/carrusel/'.$c['imagen'].'" alt="banner1" class="img-responsive center-block animated bounceInRight" /></div>';
+          } else {
+            $html .= '<div class="item"><img src="images/carrusel/'.$c['imagen'].'" alt="banner1" class="img-responsive center-block animated bounceInRight" /></div>';
+          }
+          $cant ++;
+        }
+        $html .= "</div>";
+        $html .= '<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>';
+      }
+    } catch (Exception $e) {
+         
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,17 +61,6 @@
       <span id="top2" style="letter-spacing: 0px; text-transform: uppercase; font-weight: 600; color: #fff !important; width: 100%;">GÜLP, Objetos de Otra Galaxia</span>
     </div>
   </div>
-    <!--
-    <i id="top1" class="fa fa-fighter-jet" aria-hidden="true" style=" color: #fff; width: 100%;"></i>
-    <i id="top2" class="fa fa-fighter-jet" aria-hidden="true" style="float: left; color: #fff; width: 100%;"></i>
-    <p id="top1" style="display: inline;"><i class="fa fa-fighter-jet" aria-hidden="true" style="color: #fff;"></i></p>
-    <p id="top2" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">GÜLP,</p>
-    <p id="top3" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Objetos</p>
-    <p id="top4" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">de </p>
-    <p id="top5" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Otra</p>
-    <p id="top6" style="display: inline; letter-spacing: 1px; text-transform: uppercase; font-weight: 550; color: #fff !important;">Galaxia</p>
-    <p id="top7" style="display: inline;"><i class="fa fa-rocket" aria-hidden="true" style="color: #fff;"></i></p>
-    -->
   </div>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse bg-color" style="padding: 15px 0px 15px 0px">
@@ -63,25 +94,7 @@
     <!--start carousel -->
     <div id="contenedor" style ="margin-top: -12px;" class="center-block col-sm-12">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-          <li data-target="#myCarousel" data-slide-to="3"></li>
-          <li data-target="#myCarousel" data-slide-to="4"></li>
-        </ol>
-        
-        <div class="carousel-inner">
-          <div class="active item"><img  src="images/pr2.jpg" alt="banner1" class="img-responsive center-block animated bounceInRight" /></div>
-          <div class="item"><img src="images/pr2.jpg" alt="banner2" class="img-responsive center-block animated bounceInRight" /></div>
-          <div class="item"><img src="images/pr2.jpg" alt="banner3" class="img-responsive center-block animated bounceInRight" /></div>
-          <div class="item"><img src="images/pr2.jpg" alt="banner4" class="img-responsive center-block animated bounceInRight" /></div>
-          <div class="item"><img src="images/pr2.jpg" alt="banner5" class="img-responsive center-block animated bounceInRight" /></div>
-        </div>
-
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        
+        <?php echo $html; ?>        
       </div>
   </div>
   <img id="iso" src="images/iso_tr_nuevo.png" alt="banner4" class="img-responsive center-block animated rotateIn" style="padding-top: 7px; padding-bottom: 7px; width: 60px;" />

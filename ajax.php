@@ -41,6 +41,9 @@ if(isset($_POST['eliminar_descripcion'])) {
 if(isset($_POST['eliminar_imagen'])) {
   echo eliminar_imagen($_POST['eliminar_imagen']);
 }
+if(isset($_POST['eliminar_carrusel'])) {
+  echo eliminar_carrusel($_POST['eliminar_carrusel']);
+}
 
 
 function cargarprod($id) {
@@ -288,6 +291,13 @@ function eliminar_descripcion($id) {
 function eliminar_imagen($id) {
   $conn = new mysqli('localhost', 'root', '', 'gulp');
   $sql1 = "DELETE FROM producto_multimedia WHERE id_multimedia=".$id;
+  $result = $conn->query($sql1);
+  return;
+}
+
+function eliminar_carrusel($id) {
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $sql1 = "DELETE FROM carrusel WHERE id_carrusel=".$id;
   $result = $conn->query($sql1);
   return;
 }

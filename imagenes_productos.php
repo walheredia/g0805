@@ -108,7 +108,7 @@
         <input type="hidden" class="form-control" id="id_producto" name="id_producto" value="<?php echo $id_producto; ?>" style="width: 100px;">
           <div class="form-group" style="padding-top: 20px;">
             <div class="col-sm-12">
-              <input class="" id="imagen" name="imagen" size="30" type="file" />
+              <input class="img-selector" id="imagen" name="imagen" size="30" type="file" />
               <input style="margin-top: 5px;" type="submit" id="submit" name="submit" value="Guardar Imagen" class="btn btn-primary form-control">
             </div>
           </div>
@@ -162,5 +162,8 @@
       });
     }
   }
+  $(document).ready(function () {
+    $('.img-selector').css('font-size','18px');
+  });
 </script>
 </html>
