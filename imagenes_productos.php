@@ -101,7 +101,7 @@
     </div>
     <div style="width: 80%;" class="center-block">
     <?php echo $html; ?>
-        <div class="">
+    <div class="">
         <hr>
         <h3 class="text-center"><strong>Insertar imagen nueva</strong></h3>
         <form class="form-horizontal center-block" style="max-width: 900px; margin-top: -20px;" action="imagenes_productos_upload.php" enctype="multipart/form-data" method="post">
@@ -113,6 +113,26 @@
             </div>
           </div>
         </form>
+    </div>
+    <div>
+      <hr>
+      <h3 class="text-center"><strong>Insertar video nuevo</strong></h3>
+      <div style="max-width: 950px;" class="center-block">
+        <div class="form-group" style="margin: 1px 4px 0px 4px;">
+        <div class="col-sm-12">
+          <label class="">URL <small>Pasos para obtener el link; Ir al video de YouTube, click derecho sobre él y seleccionar 'Copy embed code', (de todo ese texto obtenido, solamente pegar el link. Ejemplo: https://www.youtube.com/embed/K6nU3YoVgvU)</small></label>
+          <input type="text" class="form-control" id="video" name="video" required value="" placeholder="https://www.youtube.com/embed/K6nU3YoVgvU">
+        </div>
+        <div class="form-group" style="padding-top: 20px;">
+            <div class="col-sm-12">
+              <input style="margin-top: 5px;" onclick="guardar_video();" type="submit" name="submit" value="Guardar Enlace" class="btn btn-primary form-control">
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+    <div style="margin-top: 150px;">
+      
     </div>
 </body>
 <script src="js/jquery-3.2.1.min.js"></script>
@@ -165,5 +185,20 @@
   $(document).ready(function () {
     $('.img-selector').css('font-size','18px');
   });
+  function guardar_video(){
+    var video="video="+$("#video").val();
+    $.ajax({
+      url: 'ajax.php',
+      type: 'POST',
+      data: video,
+      success: function(data) {
+        location.reload();
+      },
+      error: function(){
+      alert('Error!');
+      }
+    });
+  }
+  fu
 </script>
 </html>

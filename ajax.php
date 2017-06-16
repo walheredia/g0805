@@ -44,6 +44,9 @@ if(isset($_POST['eliminar_imagen'])) {
 if(isset($_POST['eliminar_carrusel'])) {
   echo eliminar_carrusel($_POST['eliminar_carrusel']);
 }
+if(isset($_POST['video'])) {
+  echo guardarvideo($_POST['video']);
+}
 
 
 function cargarprod($id) {
@@ -301,4 +304,15 @@ function eliminar_carrusel($id) {
   $result = $conn->query($sql1);
   return;
 }
+
+/*function guardarvideo($video) {
+  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $sql = "INSERT INTO carrusel(id_producto, descripcion)
+              VALUES (
+              '".$_POST['id_producto']."',
+              '".$_POST['descripcion']."'
+              );";
+  $result = $conn->query($sql1);
+  return;
+}*/
 ?>
