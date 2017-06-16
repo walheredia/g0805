@@ -186,12 +186,13 @@
     $('.img-selector').css('font-size','18px');
   });
   function guardar_video(){
-    var video="video="+$("#video").val();
+    var guardar_video="producto="+$("#id_producto").val()+"&video="+$("#video").val();
     $.ajax({
       url: 'ajax.php',
       type: 'POST',
-      data: video,
+      data: guardar_video,
       success: function(data) {
+        alert(data);
         location.reload();
       },
       error: function(){

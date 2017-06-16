@@ -305,7 +305,8 @@ function eliminar_carrusel($id) {
   return;
 }
 
-/*function guardarvideo($video) {
+function guardarvideo($video) {
+  return "hola";
   $conn = new mysqli('localhost', 'root', '', 'gulp');
   $sql = "INSERT INTO carrusel(id_producto, descripcion)
               VALUES (
@@ -314,5 +315,5 @@ function eliminar_carrusel($id) {
               );";
   $result = $conn->query($sql1);
   return;
-}*/
+}
 ?>
