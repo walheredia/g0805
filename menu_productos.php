@@ -8,7 +8,7 @@
   //Fin chequeo de Sesión
 ?>
 <?php
-  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $conn = new mysqli('localhost', 'root', 'root', 'gulp');
   $sql_prod = "SELECT * from productos";
   $result = $conn->query($sql_prod);
    while($row = $result->fetch_array()){
@@ -46,7 +46,7 @@
 
   if ((isset($_POST['nombre']) && (isset($_POST['descripcion'])))) {
     if (empty($_POST['id_producto'])) {
-      $conn = new mysqli('localhost', 'root', '', 'gulp');
+      $conn = new mysqli('localhost', 'root', 'root', 'gulp');
       $sql = "INSERT INTO productos(nombre, descripcion)
               VALUES (
               '".$_POST['nombre']."',
@@ -59,7 +59,7 @@
       }
       $conn->close();
     } else {
-      $conn = new mysqli('localhost', 'root', '', 'gulp');
+      $conn = new mysqli('localhost', 'root', 'root', 'gulp');
       $sql = "UPDATE productos
               SET 
               nombre='".$_POST['nombre']."',

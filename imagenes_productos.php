@@ -9,7 +9,7 @@
 ?>
 <?php 
   if (isset($_GET["p"])) {
-    $conn = new mysqli('localhost', 'root', '', 'gulp');
+    $conn = new mysqli('localhost', 'root', 'root', 'gulp');
     //Nombre del producto
     $sql0 = "SELECT * from productos where id_producto = ".$_GET['p'];
     $nombre = $conn->query($sql0);
@@ -39,13 +39,23 @@
               </thead>
               <tbody>';
       foreach ($multimedia as $m) {
-        $html.='<tr>
+        if (strpos($m['multimedia'], 'wwww.you') !== false) {
+          $html.='<tr>
+                <th scope="row">'.$m['id_multimedia'].'</th>
+                <td><img src="images/products/video.png" alt="banner1" class="img-responsive img-rounded" style="width: 50px; height: 50px;" /></td>
+                <td>
+                  <a title="eliminar" href="" onclick="confirmar('."'".$m['id_multimedia']."'".'); return false;"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
+                </td>
+              </tr>';
+        } else {
+          $html.='<tr>
                 <th scope="row">'.$m['id_multimedia'].'</th>
                 <td><img src="images/products/'.$m["multimedia"].'" alt="banner1" class="img-responsive img-rounded" style="width: 50px; height: 50px;" /></td>
                 <td>
                   <a title="eliminar" href="" onclick="confirmar('."'".$m['id_multimedia']."'".'); return false;"><i class="fa fa-remove" aria-hidden="true" style="font-size: 18px;"></i></a>
                 </td>
               </tr>';
+        }
       }
       $html .='</tbody>
             </table>';  
@@ -192,7 +202,6 @@
       type: 'POST',
       data: guardar_video,
       success: function(data) {
-        alert(data);
         location.reload();
       },
       error: function(){

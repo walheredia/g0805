@@ -8,7 +8,7 @@
   //Fin chequeo de Sesión
 ?>
 <?php 
-  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $conn = new mysqli('localhost', 'root', 'root', 'gulp');
     //Nombre del producto
     $sql0 = "SELECT * from carrusel";
     $carr = $conn->query($sql0);
