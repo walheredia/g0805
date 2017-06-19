@@ -10,7 +10,7 @@
 <?php 
   if ((isset($_POST['descripcion'])) && (isset($_POST['id_producto']))) {
     if (empty($_POST['id_descripcion'])) {
-      $conn = new mysqli('localhost', 'root', '', 'gulp');
+      $conn = new mysqli('localhost', 'mf000811_gulp', 'memisu17DU', 'mf000811_gulp');
       $sql = "INSERT INTO producto_descripcion(id_producto, descripcion)
               VALUES (
               '".$_POST['id_producto']."',
@@ -23,7 +23,7 @@
         echo "Error: " . $sql . "<br>" . $conn->error;die();
       }
     } else {
-      $conn = new mysqli('localhost', 'root', '', 'gulp');
+      $conn = new mysqli('localhost', 'mf000811_gulp', 'memisu17DU', 'mf000811_gulp');
       $sql = "UPDATE producto_descripcion
               SET 
               descripcion='".$_POST['descripcion']."'
@@ -38,7 +38,7 @@
     }
   }
   if (isset($_GET["p"])) {
-    $conn = new mysqli('localhost', 'root', '', 'gulp');
+    $conn = new mysqli('localhost', 'mf000811_gulp', 'memisu17DU', 'mf000811_gulp');
     //Nombre del producto
     $sql0 = "SELECT * from productos where id_producto = ".$_GET['p'];
     $nombre = $conn->query($sql0);

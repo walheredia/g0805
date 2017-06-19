@@ -1,5 +1,5 @@
 <?php 
-  $conn = new mysqli('localhost', 'root', '', 'gulp');
+  $conn = new mysqli('localhost', 'mf000811_gulp', 'memisu17DU', 'mf000811_gulp');
     //Nombre del producto
     $sql0 = "SELECT * from carrusel";
     $carr = $conn->query($sql0);
