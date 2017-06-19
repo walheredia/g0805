@@ -1,7 +1,7 @@
 <?php 
   if(isset($_GET["p"])) {
     //Conexion
-    $conn = new mysqli('localhost', 'mf000811_gulp', 'memisu17DU', 'mf000811_gulp');
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
 
     //Producto
     $sql = "SELECT * from productos where id_producto = ".$_GET['p'];
@@ -44,10 +44,10 @@
 
   } else {
     //Conexion
-    $conn = new mysqli('localhost', 'mf000811_gulp', 'memisu17DU', 'mf000811_gulp');
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
 
     //Producto
-    $sql = "SELECT * from productos where id_producto = 1";
+    $sql = "SELECT * from productos";
     $result = $conn->query($sql);
      while($row = $result->fetch_array()){
     $productos[] = $row;
@@ -63,7 +63,7 @@
     }
     
     //Descripciones
-    $sql1 = "SELECT * from producto_descripcion where id_producto = 1";
+    $sql1 = "SELECT * from producto_descripcion where id_producto = ".$id_producto;
     $desc = $conn->query($sql1);
     while($row = $desc->fetch_array()){
       $descripciones[] = $row;
@@ -73,7 +73,7 @@
     }
 
     //Multimedia
-    $sql2 = "SELECT * from producto_multimedia where id_producto = 1";
+    $sql2 = "SELECT * from producto_multimedia where id_producto = ".$id_producto;
     $mult = $conn->query($sql2);
     while($row = $mult->fetch_array()){
       $multimedias[] = $row;

@@ -35,7 +35,7 @@
      
     /* volvemos a la página principal para cargar la imagen que hemos subido */
 
-    $conn = new mysqli('localhost', 'mf000811_gulp', 'memisu17DU', 'mf000811_gulp');
+    $conn = new mysqli('localhost', 'root', '', 'gulp');
       $sql = "INSERT INTO carrusel_img(id_producto, multimedia)
               VALUES (
               '".$_POST['id_producto']."',

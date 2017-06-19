@@ -50,7 +50,7 @@
       </div>
     </nav>
     <!--End navbar -->
-    <form class="form-horizontal center-block" style="max-width: 900px; margin-top: -20px;">
+    <form  action="contacto_post.php" method="POST" role="form" class="form-horizontal center-block" style="max-width: 900px; margin-top: -20px;">
       <div class="form-group" style="margin: 0px 4px 0px 4px;">
         <div class="col-sm-12 texto-contacto">
           <h4><strong>GÜLP<i class="fa fa-registered" style="font-size: 12px;" aria-hidden="true"></i></strong> Rosario, Santa Fe, Argentina</h4>
@@ -66,27 +66,27 @@
       <div class="form-group" style="margin: -10px 4px 0px 4px;">
         <div class="col-sm-6">
           <label class="form-contacto">Nombre y Apellido</label>
-          <input type="text" class="form-control border" id="nombre" required>
+          <input type="text" class="form-control border" id="nombre" name="nombre" required>
         </div>
         <div class="col-sm-6">
           <label class="form-contacto">Email</label>
-          <input type="email" class="form-control border" id="email" required>
+          <input type="email" class="form-control border" id="email" name="email" required>
         </div>
       </div>
       <div class="form-group" style="margin: 0px 4px 0px 4px;">
         <div class="col-sm-6">
           <label class="form-contacto">Teléfono</label>
-          <input type="text" class="form-control border" id="telefono" required>
+          <input type="text" class="form-control border" id="telefono" name="telefono" required>
         </div>
         <div class="col-sm-6">
           <label class="form-contacto">Provincia y Localidad</label>
-          <input type="text" class="form-control border" id="localidad" required>
+          <input type="text" class="form-control border" id="localidad" name="localidad" required>
         </div>
       </div>
       <div class="form-group" style="margin: 0px 4px 4px 4px;">
         <div class="col-sm-12">
           <label class="form-contacto">Mensaje</label>
-          <textarea id="mensaje" class="form-control border" rows="7" style="max-width: 900px;"></textarea>
+          <textarea id="mensaje" name="mensaje" class="form-control border" rows="7" style="max-width: 900px;"></textarea>
         </div>
       </div>
       <div class="form-group" style="margin: 0px 4px 0px 4px;">
